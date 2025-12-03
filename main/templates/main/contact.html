@@ -4,6 +4,7 @@
 {% block title %}{{ page_title }}{% endblock %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
     * {
         margin: 0;
@@ -13,271 +14,440 @@
 
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f5f5f5;
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
         color: #333;
     }
 
     .contact-page {
+        padding: 140px 0 80px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Decorative Background */
+    .bg-decoration {
+        position: absolute;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .circle-1 {
+        top: 100px;
+        right: -100px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite;
+    }
+
+    .circle-2 {
+        bottom: 100px;
+        left: -150px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(44, 62, 80, 0.08) 0%, transparent 70%);
+        border-radius: 50%;
+        animation: float 10s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    .contact-container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 120px 20px 60px 20px; /* Added top padding to account for fixed navbar */
+        padding: 0 20px;
+        position: relative;
+        z-index: 1;
     }
 
-    /* Header Section */
-    .contact-header {
+    /* Hero Section */
+    .contact-hero {
         text-align: center;
-        margin-bottom: 60px;
+        margin-bottom: 80px;
+        animation: fadeInDown 0.8s ease-out;
     }
 
-    .contact-header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 24px;
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
+        color: white;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 20px;
+        line-height: 1.2;
         color: #2c3e50;
     }
 
-    .contact-header h1 .highlight {
-        color: #d4a574;
+    .hero-title .highlight {
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
-    .contact-header p {
+    .hero-description {
+        font-size: 1.2rem;
         color: #6c757d;
-        font-size: 1rem;
-        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.8;
     }
 
-    /* Contact Cards Grid */
-    .contact-cards {
+    /* Quick Contact Cards */
+    .quick-contact-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 20px;
-        margin-bottom: 60px;
+        margin-bottom: 80px;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
     }
 
-    .contact-info-card {
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .quick-contact-card {
         background: white;
-        border: 1px solid rgba(212, 165, 116, 0.3);
-        border-radius: 12px;
-        padding: 30px;
+        border-radius: 20px;
+        padding: 35px 25px;
         text-align: center;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         cursor: pointer;
+        position: relative;
+        overflow: hidden;
     }
 
-    .contact-info-card:hover {
-        box-shadow: 0 10px 30px rgba(212, 165, 116, 0.2);
-        transform: translateY(-5px);
-        border-color: rgba(212, 165, 116, 0.5);
+    .quick-contact-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
     }
 
-    .contact-info-card .icon {
-        width: 60px;
-        height: 60px;
+    .quick-contact-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .quick-contact-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(212, 165, 116, 0.25);
+    }
+
+    .quick-contact-icon {
+        width: 70px;
+        height: 70px;
         margin: 0 auto 20px;
-        background: #fff8f0;
+        background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(212, 165, 116, 0.05));
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 0.3s ease;
     }
 
-    .contact-info-card .icon svg {
-        width: 28px;
-        height: 28px;
-        stroke: #d4a574;
+    .quick-contact-card:hover .quick-contact-icon {
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
+        transform: scale(1.1);
     }
 
-    .contact-info-card h3 {
+    .quick-contact-icon i {
+        font-size: 28px;
+        color: #c7b04c;
+        transition: color 0.3s ease;
+    }
+
+    .quick-contact-card:hover .quick-contact-icon i {
+        color: white;
+    }
+
+    .quick-contact-card h3 {
         font-size: 1.1rem;
         margin-bottom: 10px;
         color: #2c3e50;
-    }
-
-    .contact-info-card .detail {
         font-weight: 600;
-        color: #2c3e50;
-        margin-bottom: 5px;
     }
 
-    .contact-info-card .description {
-        font-size: 0.9rem;
+    .quick-contact-card .detail {
+        font-weight: 600;
+        color: #c7b04c;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+    }
+
+    .quick-contact-card .description {
+        font-size: 0.85rem;
         color: #999;
     }
 
     /* Main Content Grid */
-    .contact-content {
+    .contact-content-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1.2fr 1fr;
         gap: 30px;
-        margin-bottom: 60px;
+        margin-bottom: 80px;
     }
 
-    /* Form Section */
-    .form-section {
-        background: linear-gradient(135deg, rgba(212, 165, 116, 0.05), rgba(44, 62, 80, 0.05));
-        border: 1px solid rgba(212, 165, 116, 0.3);
-        border-radius: 12px;
-        padding: 40px;
-        transition: all 0.3s ease;
+    /* Contact Form */
+    .contact-form-section {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        animation: fadeInLeft 0.8s ease-out 0.3s backwards;
     }
 
-    .form-section:hover {
-        box-shadow: 0 10px 30px rgba(212, 165, 116, 0.15);
-        border-color: rgba(212, 165, 116, 0.5);
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 
-    .form-section h2 {
-        font-size: 1.75rem;
+    .form-header {
+        margin-bottom: 35px;
+    }
+
+    .form-header h2 {
+        font-size: 2rem;
         margin-bottom: 10px;
         color: #2c3e50;
+        font-weight: 700;
     }
 
-    .form-section .subtitle {
-        color: #999;
-        margin-bottom: 30px;
+    .form-header p {
+        color: #6c757d;
+        font-size: 1rem;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
 
     .form-group {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
 
     .form-group label {
         display: block;
-        margin-bottom: 8px;
-        font-weight: 500;
+        margin-bottom: 10px;
+        font-weight: 600;
         color: #2c3e50;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .form-group label .required {
-        color: #d4a574;
+        color: #c7b04c;
     }
 
     .form-control {
         width: 100%;
-        padding: 12px 15px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
+        padding: 15px 20px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
         font-size: 0.95rem;
-        transition: border-color 0.3s;
+        transition: all 0.3s ease;
+        background: #f9fafb;
     }
 
     .form-control:focus {
         outline: none;
-        border-color: #d4a574;
+        border-color: #c7b04c;
+        background: white;
+        box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.1);
     }
 
     textarea.form-control {
         resize: vertical;
-        min-height: 120px;
+        min-height: 140px;
+        font-family: inherit;
     }
 
     .btn-submit {
         width: 100%;
-        padding: 14px;
-        background: #2c3e50;
+        padding: 18px;
+        background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
         color: white;
         border: none;
-        border-radius: 6px;
-        font-size: 1rem;
-        font-weight: 600;
+        border-radius: 12px;
+        font-size: 1.05rem;
+        font-weight: 700;
         cursor: pointer;
-        transition: background 0.3s;
+        transition: all 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
     }
 
     .btn-submit:hover {
-        background: #1a252f;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
     }
 
-    .btn-submit svg {
-        width: 18px;
-        height: 18px;
+    .btn-submit i {
+        font-size: 18px;
+        transition: transform 0.3s ease;
     }
 
-    /* Map and Info Section */
-    .map-info-section {
+    .btn-submit:hover i {
+        transform: translateX(5px);
+    }
+
+    /* Side Content */
+    .contact-side-content {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
+        animation: fadeInRight 0.8s ease-out 0.4s backwards;
     }
 
-    .map-container {
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Map Card */
+    .map-card {
         background: white;
-        border: 1px solid rgba(212, 165, 116, 0.3);
-        border-radius: 12px;
+        border-radius: 20px;
         overflow: hidden;
-        height: 300px;
-        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        height: 350px;
     }
 
-    .map-container:hover {
-        box-shadow: 0 10px 30px rgba(212, 165, 116, 0.15);
-        border-color: rgba(212, 165, 116, 0.5);
-    }
-
-    .map-container iframe {
+    .map-card iframe {
         width: 100%;
         height: 100%;
         border: none;
     }
 
-    .office-info {
+    /* Office Info Card */
+    .office-info-card {
         background: white;
-        border: 1px solid #e5e5e5;
-        border-radius: 12px;
-        padding: 35px;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
 
-    .office-info h2 {
+    .office-info-card h3 {
         font-size: 1.5rem;
         margin-bottom: 10px;
         color: #2c3e50;
+        font-weight: 700;
     }
 
-    .office-info .subtitle {
-        color: #999;
-        margin-bottom: 25px;
-        font-size: 0.9rem;
+    .office-info-card .subtitle {
+        color: #6c757d;
+        margin-bottom: 30px;
+        font-size: 0.95rem;
     }
 
-    .info-row {
+    .info-item {
         display: flex;
-        gap: 15px;
+        gap: 18px;
         margin-bottom: 25px;
+        padding: 20px;
+        background: #f9fafb;
+        border-radius: 12px;
+        transition: all 0.3s ease;
     }
 
-    .info-row:last-of-type {
+    .info-item:hover {
+        background: #fff8f0;
+        transform: translateX(5px);
+    }
+
+    .info-item:last-child {
         margin-bottom: 30px;
     }
 
-    .info-row .icon {
-        width: 45px;
-        height: 45px;
-        background: #fff8f0;
-        border-radius: 8px;
+    .info-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(212, 165, 116, 0.05));
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
     }
 
-    .info-row .icon svg {
-        width: 22px;
-        height: 22px;
-        stroke: #d4a574;
+    .info-icon i {
+        font-size: 22px;
+        color: #c7b04c;
     }
 
-    .info-row .content h4 {
+    .info-content h4 {
         font-size: 1rem;
-        margin-bottom: 5px;
+        margin-bottom: 6px;
         color: #2c3e50;
+        font-weight: 600;
     }
 
-    .info-row .content p {
-        color: #666;
+    .info-content p {
+        color: #6c757d;
         font-size: 0.9rem;
         line-height: 1.6;
         margin: 0;
@@ -285,373 +455,334 @@
 
     .btn-appointment {
         width: 100%;
-        padding: 14px;
-        background: #2c3e50;
+        padding: 16px;
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
         color: white;
         border: none;
-        border-radius: 6px;
+        border-radius: 12px;
         font-size: 1rem;
-        font-weight: 600;
+        font-weight: 700;
         cursor: pointer;
-        transition: background 0.3s;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
     }
 
     .btn-appointment:hover {
-        background: #1a252f;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
     }
 
-    /* Newsletter Section */
-    .newsletter-section {
-        background: white;
-        border: 1px solid rgba(212, 165, 116, 0.3);
-        border-radius: 12px;
-        padding: 50px;
-        text-align: center;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-    }
-
-    .newsletter-section:hover {
-        box-shadow: 0 10px 30px rgba(212, 165, 116, 0.15);
-        border-color: rgba(212, 165, 116, 0.5);
-    }
-
-    .newsletter-section h2 {
-        font-size: 1.75rem;
-        margin-bottom: 10px;
-        color: #2c3e50;
-    }
-
-    .newsletter-section h2 .highlight {
-        color: #d4a574;
-    }
-
-    .newsletter-section p {
-        color: #999;
-        margin-bottom: 25px;
-    }
-
-    .newsletter-form {
-        display: flex;
-        gap: 10px;
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
-    .newsletter-form input {
-        flex: 1;
-        padding: 12px 15px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        font-size: 0.95rem;
-    }
-
-    .newsletter-form input:focus {
-        outline: none;
-        border-color: #d4a574;
-    }
-
-    .newsletter-form button {
-        padding: 12px 30px;
-        background: #2c3e50;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
-
-    .newsletter-form button:hover {
-        background: #1a252f;
-    }
+   
 
     /* Floating Buttons */
-    .floating-btns {
+    .floating-buttons {
         position: fixed;
-        bottom: 30px;
-        right: 30px;
+        bottom: 6rem;
+        right: 2rem;
         display: flex;
-        flex-direction: column;
-        gap: 12px;
-        z-index: 1000;
+        gap: 1rem;
+        z-index: 100;
+        animation: fadeInUp 1s ease-out 0.6s backwards;
     }
 
-    .floating-btn {
+    .float-btn {
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 12px 20px;
-        background: #4a5568;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        background: #475569;
         color: white;
         border: none;
         border-radius: 50px;
         font-weight: 600;
-        font-size: 0.85rem;
+        font-size: 0.875rem;
         text-transform: uppercase;
+        letter-spacing: 0.05em;
         cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s;
+        box-shadow: 0 10px 30px rgba(71, 85, 105, 0.3);
+        transition: all 0.3s ease;
         text-decoration: none;
     }
 
-    .floating-btn:hover {
-        background: #3a4558;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    .float-btn:hover {
+        background: #334155;
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(71, 85, 105, 0.4);
     }
 
-    .floating-btn svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    /* Responsive */
-    @media (max-width: 968px) {
-        .contact-content {
-            grid-template-columns: 1fr;
-        }
-
-        .contact-cards {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .floating-btns {
-            bottom: 20px;
-            right: 20px;
-        }
-    }
-
-    @media (max-width: 640px) {
-        .contact-cards {
-            grid-template-columns: 1fr;
-        }
-
-        .contact-header h1 {
-            font-size: 2rem;
-        }
-
-        .newsletter-form {
-            flex-direction: column;
-        }
-
-        .form-section,
-        .office-info,
-        .newsletter-section {
-            padding: 25px;
-        }
+    .float-btn i {
+        font-size: 1.25rem;
     }
 
     .error-message {
         color: #dc3545;
         font-size: 0.85rem;
-        margin-top: 5px;
+        margin-top: 8px;
+        display: none;
+    }
+
+    .error-message.show {
+        display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+        .quick-contact-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .contact-content-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-page {
+            padding: 120px 0 60px 0;
+        }
+
+        .quick-contact-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .contact-form-section {
+            padding: 30px;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .office-info-card {
+            padding: 30px;
+        }
+
+       
+
+        .floating-buttons {
+            flex-direction: column;
+            bottom: 5rem;
+            right: 1.5rem;
+            gap: 0.75rem;
+        }
+
+        .float-btn {
+            width: 56px;
+            height: 56px;
+            padding: 0;
+            border-radius: 50%;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(71, 85, 105, 0.35);
+        }
+
+        .float-btn span {
+            display: none;
+        }
+
+        .float-btn i {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-title {
+            font-size: 2rem;
+        }
     }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="contact-page">
-    <!-- Header -->
-    <div class="contact-header">
-        <h1>Let's <span class="highlight">Connect</span></h1>
-        <p>Have questions about off-plan properties? Our expert team is here to guide your<br>investment journey.</p>
-    </div>
+    <!-- Background Decorations -->
+    <div class="bg-decoration circle-1"></div>
+    <div class="bg-decoration circle-2"></div>
 
-    <!-- Contact Info Cards -->
-    <div class="contact-cards">
-        <div class="contact-info-card" onclick="window.location.href='tel:+971-4-XXX-XXXX'">
-            <div class="icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
+    <div class="contact-container">
+        <!-- Hero Section -->
+        <div class="contact-hero">
+            <div class="hero-badge">
+                <i class="fas fa-envelope"></i>
+                Get in Touch
             </div>
-            <h3>Call Us</h3>
-            <div class="detail">+971 4 XXX XXXX</div>
-            <div class="description">Mon-Fri, 9AM-6PM GST</div>
+            <h1 class="hero-title">Let's <span class="highlight">Connect</span></h1>
+            <p class="hero-description">
+                Have questions about off-plan properties? Our expert team is here to guide your investment journey
+            </p>
         </div>
 
-        <div class="contact-info-card" onclick="window.location.href='mailto:info@offplanuae.ai'">
-            <div class="icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
-                </svg>
-            </div>
-            <h3>Email Us</h3>
-            <div class="detail">info@offplanuae.ai</div>
-            <div class="description">We'll respond within 24 hours</div>
-        </div>
-
-        <div class="contact-info-card">
-            <div class="icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                </svg>
-            </div>
-            <h3>Visit Us</h3>
-            <div class="detail">Business Bay, Dubai</div>
-            <div class="description">United Arab Emirates</div>
-        </div>
-
-        <div class="contact-info-card">
-            <div class="icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                </svg>
-            </div>
-            <h3>Working Hours</h3>
-            <div class="detail">9:00 AM - 6:00 PM</div>
-            <div class="description">Monday to Friday</div>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="contact-content">
-        <!-- Contact Form -->
-        <div class="form-section">
-            <h2>Send Us a Message</h2>
-            <p class="subtitle">Fill out the form and we'll get back to you within 24 hours</p>
-
-            <form id="contactForm">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label>Full Name <span class="required">*</span></label>
-                    <input type="text" name="name" class="form-control" placeholder="John Doe" required>
-                    <div class="error-message" id="name-error"></div>
+        <!-- Quick Contact Cards -->
+        <div class="quick-contact-grid">
+            <div class="quick-contact-card" onclick="window.location.href='tel:+971-4-XXX-XXXX'">
+                <div class="quick-contact-icon">
+                    <i class="fas fa-phone"></i>
                 </div>
-
-                <div class="form-group">
-                    <label>Email Address <span class="required">*</span></label>
-                    <input type="email" name="email" class="form-control" placeholder="john.doe@example.com" required>
-                    <div class="error-message" id="email-error"></div>
-                </div>
-
-                <div class="form-group">
-                    <label>Phone Number <span class="required">*</span></label>
-                    <input type="tel" name="phone" class="form-control" placeholder="+971 XX XXX XXXX" required>
-                    <div class="error-message" id="phone-error"></div>
-                </div>
-
-                <div class="form-group">
-                    <label>Subject <span class="required">*</span></label>
-                    <input type="text" name="subject" class="form-control" placeholder="Property Inquiry" required>
-                    <div class="error-message" id="subject-error"></div>
-                </div>
-
-                <div class="form-group">
-                    <label>Message <span class="required">*</span></label>
-                    <textarea name="message" class="form-control" placeholder="Tell us about your property requirements..." required></textarea>
-                    <div class="error-message" id="message-error"></div>
-                </div>
-
-                <button type="submit" class="btn-submit">
-                    <span>Send Message</span>
-                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <line x1="22" y1="2" x2="11" y2="13"/>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                    </svg>
-                </button>
-            </form>
-        </div>
-
-        <!-- Map and Office Info -->
-        <div class="map-info-section">
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.6828174052!2d54.89782!3d25.076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1234567890" allowfullscreen loading="lazy"></iframe>
+                <h3>Call Us</h3>
+                <div class="detail">+971 4 XXX XXXX</div>
+                <div class="description">Mon-Fri, 9AM-6PM GST</div>
             </div>
 
-            <div class="office-info">
-                <h2>Our Office</h2>
-                <p class="subtitle">Visit us for a personalized consultation</p>
-
-                <div class="info-row">
-                    <div class="icon">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                    </div>
-                    <div class="content">
-                        <h4>Address</h4>
-                        <p>Business Bay<br>Dubai, United Arab Emirates</p>
-                    </div>
+            <div class="quick-contact-card" onclick="window.location.href='mailto:info@offplanuae.ai'">
+                <div class="quick-contact-icon">
+                    <i class="fas fa-envelope"></i>
                 </div>
+                <h3>Email Us</h3>
+                <div class="detail">info@offplanuae.ai</div>
+                <div class="description">24-hour response time</div>
+            </div>
 
-                <div class="info-row">
-                    <div class="icon">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                    </div>
-                    <div class="content">
-                        <h4>Office Hours</h4>
-                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday - Sunday: Closed</p>
-                    </div>
+            <div class="quick-contact-card">
+                <div class="quick-contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
                 </div>
+                <h3>Visit Us</h3>
+                <div class="detail">Business Bay, Dubai</div>
+                <div class="description">United Arab Emirates</div>
+            </div>
 
-                <div class="info-row">
-                    <div class="icon">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="2" y1="12" x2="22" y2="12"/>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                        </svg>
-                    </div>
-                    <div class="content">
-                        <h4>Website</h4>
-                        <p>www.offplanuae.ai</p>
-                    </div>
+            <div class="quick-contact-card">
+                <div class="quick-contact-icon">
+                    <i class="fas fa-clock"></i>
                 </div>
-
-                <button class="btn-appointment" onclick="alert('Appointment booking coming soon!')">Book an Appointment</button>
+                <h3>Working Hours</h3>
+                <div class="detail">9:00 AM - 6:00 PM</div>
+                <div class="description">Monday to Friday</div>
             </div>
         </div>
-    </div>
 
-    <!-- Newsletter -->
-    <div class="newsletter-section">
-        <h2>Stay <span class="highlight">Updated</span></h2>
-        <p>Get the latest off-plan property insights and investment insights delivered to<br>your inbox</p>
-        <form class="newsletter-form" onsubmit="alert('Newsletter signup coming soon!'); return false;">
-            <input type="email" placeholder="Enter your email address" required>
-            <button type="submit">Subscribe</button>
-        </form>
+        <!-- Main Content -->
+        <div class="contact-content-grid">
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <div class="form-header">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form and we'll get back to you within 24 hours</p>
+                </div>
+
+                <form id="contactForm">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name <span class="required">*</span></label>
+                            <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                            <div class="error-message" id="name-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number <span class="required">*</span></label>
+                            <input type="tel" name="phone" class="form-control" placeholder="+971 XX XXX XXXX" required>
+                            <div class="error-message" id="phone-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" name="email" class="form-control" placeholder="john.doe@example.com" required>
+                        <div class="error-message" id="email-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subject <span class="required">*</span></label>
+                        <input type="text" name="subject" class="form-control" placeholder="Property Inquiry" required>
+                        <div class="error-message" id="subject-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message <span class="required">*</span></label>
+                        <textarea name="message" class="form-control" placeholder="Tell us about your property requirements..." required></textarea>
+                        <div class="error-message" id="message-error"></div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Side Content -->
+            <div class="contact-side-content">
+                <!-- Map -->
+                <div class="map-card">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.6828174052!2d54.89782!3d25.076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1234567890" allowfullscreen loading="lazy"></iframe>
+                </div>
+
+                <!-- Office Info -->
+                <div class="office-info-card">
+                    <h3>Our Office</h3>
+                    <p class="subtitle">Visit us for a personalized consultation</p>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Address</h4>
+                            <p>Business Bay<br>Dubai, United Arab Emirates</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Office Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday - Sunday: Closed</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Website</h4>
+                            <p>www.offplanuae.ai</p>
+                        </div>
+                    </div>
+
+                    <button class="btn-appointment" onclick="alert('Appointment booking coming soon!')">
+                        Book an Appointment
+                    </button>
+                </div>
+            </div>
+        </div>
+
+       
+       
     </div>
 </div>
 
 <!-- Floating Buttons -->
-<div class="floating-btns">
-    <a href="tel:+971-XXX-XXXX" class="floating-btn">
-        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-        </svg>
+<div class="floating-buttons">
+    <a href="tel:+971-XXX-XXXX" class="float-btn">
+        <i class="fas fa-phone"></i>
         <span>Call Back</span>
     </a>
-
-    <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="floating-btn">
-        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-        </svg>
+    <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="float-btn">
+        <i class="fab fa-whatsapp"></i>
         <span>WhatsApp</span>
     </a>
 </div>
-
 <script>
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const formData = new FormData(this);
     const data = Object.fromEntries(formData);
-    
+
     // Clear previous errors
-    document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+    document.querySelectorAll('.error-message').forEach(el => {
+        el.textContent = '';
+        el.classList.remove('show');
+    });
     
     try {
-       const response = await fetch('{% url "main:contact" %}', {
+        const response = await fetch('{% url "main:contact" %}', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -661,22 +792,24 @@ document.getElementById('contactForm').addEventListener('submit', async function
         });
         
         const result = await response.json();
-        
+
         if (result.status === 'success') {
             alert(result.message);
             this.reset();
         } else {
             if (result.errors) {
                 Object.keys(result.errors).forEach(key => {
-                    const errorEl = document.getElementById(key + '-error');
-                    if (errorEl) errorEl.textContent = result.errors[key];
+                    const errorEl = document.getElementById(`${key}-error`);
+                    if (errorEl) {
+                        errorEl.textContent = result.errors[key];
+                        errorEl.classList.add('show');
+                    }
                 });
-            } else {
-                alert('Error: ' + result.message);
             }
         }
     } catch (error) {
-        alert('An error occurred. Please try again.');
+        alert("Something went wrong. Please try again later.");
+        console.error(error);
     }
 });
 </script>

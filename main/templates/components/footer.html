@@ -5,7 +5,8 @@
         <!-- Brand Section -->
         <div class="footer-brand">
             <div class="footer-logo">
-                <span class="brand-name">OffPlan<span class="brand-highlight">UAE.ai</span></span>
+                 <img src="{% static 'img/logo.png' %}" alt="offplanuae">
+                <span class="brand-name">OFFPLANUAE<span class="brand-highlight">.AI</span></span>
             </div>
             <p class="footer-tagline">
                 Your trusted AI-powered platform for discovering premium off-plan properties across the UAE.
@@ -32,11 +33,11 @@
         <div class="footer-column">
             <h3 class="footer-heading">Quick Links</h3>
             <ul class="footer-links">
-                <li><a href="" class="footer-link">Home</a></li>
-                <li><a href="#" class="footer-link">About Us</a></li>
-                <li><a href="#" class="footer-link">Properties</a></li>
-                <li><a href="#" class="footer-link">Blog</a></li>
-                <li><a href="#" class="footer-link">Contact</a></li>
+                <li><a href="{% url 'main:home' %}" class="footer-link">Home</a></li>
+                <li><a href="{% url 'main:about' %}" class="footer-link">About Us</a></li>
+                <li><a href="{% url 'main:properties' %}" class="footer-link">Properties</a></li>
+                <li><a href="{% url 'main:blog' %}" class="footer-link">Blog</a></li>
+                <li><a href="{% url 'main:contact' %}" class="footer-link">Contact</a></li>
             </ul>
         </div>
         
@@ -78,13 +79,15 @@
             <div class="footer-legal">
                 <a href="#" class="legal-link">Privacy Policy</a>
                 <a href="#" class="legal-link">Terms of Service</a>
-                <a href="#" class="legal-link">Cookie Policy</a>
+                
             </div>
         </div>
     </div>
 </footer>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+
 /* Modern Footer Styles */
 .modern-footer {
     background: linear-gradient(135deg, #fff 0%, #fff 100%);
@@ -109,14 +112,22 @@
 }
 
 .footer-logo {
-    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 .brand-name {
     font-size: 1.75rem;
     font-weight: 700;
     color: #1e3a5f;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Science Gothic', sans-serif;
     letter-spacing: -0.5px;
     position: relative;
     display: inline-block;
@@ -150,10 +161,12 @@
 }
 
 .brand-highlight {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+   background: linear-gradient(135deg, #d8c469 0%, #c7b04c 100%);
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-family: 'Science Gothic', sans-serif;
 }
 
 .footer-tagline {
@@ -184,7 +197,7 @@
 }
 
 .social-icon:hover {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
     color: white;
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
@@ -229,6 +242,7 @@
     gap: 0.5rem;
     position: relative;
     padding: 0.4rem 0;
+    cursor: pointer;
 }
 
 .footer-link::before {
@@ -236,13 +250,13 @@
     opacity: 0;
     transform: translateX(-10px);
     transition: all 0.3s ease;
-    color: #f59e0b;
+    color: #c7b04c;
     font-weight: bold;
 }
 
 .footer-link:hover,
 .footer-link.active {
-    color: #f59e0b;
+    color: #c7b04c;
     padding-left: 1.5rem;
 }
 
@@ -269,7 +283,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #f59e0b;
+    color: #c7b04c;
     font-size: 0.85rem;
     flex-shrink: 0;
     margin-top: 2px;
@@ -309,7 +323,7 @@
 }
 
 .legal-link:hover {
-    color: #f59e0b;
+    color: #c7b04c;
 }
 
 /* Responsive Design */
@@ -359,24 +373,22 @@
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Active link highlighting for footer
-    const currentPath = window.location.pathname;
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPath = window.location.pathname.trim();  
     const footerLinks = document.querySelectorAll('.footer-link');
-    
+
     footerLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        
-        // Remove existing active classes
-        link.classList.remove('active');
-        
-        // Check if current path matches
-        if (href && currentPath.includes(href.split('/').pop())) {
+        const linkPath = link.getAttribute('href').trim();
+
+        link.classList.remove('active'); // reset all
+
+        // EXACT MATCH (best)
+        if (linkPath === currentPath) {
             link.classList.add('active');
         }
-        
-        // Handle home page
-        if (currentPath === '/' && (href.includes('home') || href === '/')) {
+
+        // Special case: Home page "/"
+        if (currentPath === "/" && (linkPath === "/" || linkPath.includes("home"))) {
             link.classList.add('active');
         }
     });

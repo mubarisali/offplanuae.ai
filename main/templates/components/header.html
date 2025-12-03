@@ -14,10 +14,10 @@
         <div class="logo-section">
             <a href="{% url 'main:home' %}" class="logo-link">
                 <div class="logo-icon">
-                    <i class="fas fa-plane-departure"></i>
+                    <img src="{% static 'img/logo.png' %}" alt="offplanuae">
                 </div>
                 <div class="logo-text">
-                    <span class="brand-name">OffPlan<span class="brand-highlight">UAE.ai</span></span>
+                    <span class="brand-name">OFFPLANUAE<span class="brand-highlight">.AI</span></span>
                 </div>
             </a>
         </div>
@@ -30,26 +30,7 @@
             </ul>
         </nav>
         
-        <!-- Language Selector - Desktop Only -->
-        <div class="header-actions desktop-lang">
-            <div class="language-selector">
-                <button class="lang-btn" id="langToggle">
-                    <i class="fas fa-globe"></i>
-                    <span>EN</span>
-                </button>
-                <div class="lang-dropdown" id="langDropdown">
-                    <a href="#" class="lang-option active" data-lang="en">
-                        <span class="flag">🇬🇧</span>
-                        <span>English</span>
-                    </a>
-                    <a href="#" class="lang-option" data-lang="ar">
-                        <span class="flag">🇦🇪</span>
-                        <span>العربية</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
+       
         <!-- Mobile Toggle -->
         <div class="mobile-toggle" id="mobileToggle">
             <span class="bar"></span>
@@ -66,25 +47,7 @@
             <li><a href="{% url 'main:blog' %}" class="nav-link">Blog</a></li>
             <li><a href="{% url 'main:contact' %}" class="nav-link">Contact</a></li>
             
-            <!-- Language Selector - Mobile Only -->
-            <li class="mobile-lang-section">
-                <div class="mobile-lang-title">
-                    <i class="fas fa-globe"></i>
-                    <span>Language</span>
-                </div>
-                <div class="mobile-lang-options">
-                    <a href="#" class="mobile-lang-option active" data-lang="en">
-                        <span class="flag">🇬🇧</span>
-                        <span>English</span>
-                        <i class="fas fa-check"></i>
-                    </a>
-                    <a href="#" class="mobile-lang-option" data-lang="ar">
-                        <span class="flag">🇦🇪</span>
-                        <span>العربية</span>
-                        <i class="fas fa-check"></i>
-                    </a>
-                </div>
-            </li>
+            
         </ul>
     </div>
 </header>
@@ -160,12 +123,12 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #f59e0b, #d97706);
+    background: linear-gradient(90deg, #c7b04c, #c7b04c);
     transition: width 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #f59e0b;
+    color: #c7b04c;
 }
 
 .nav-link:hover::before,
@@ -194,19 +157,18 @@
 }
 
 .logo-icon {
-    width: 45px;
-    height: 45px;
-    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
-    border-radius: 12px;
+    width: 60px;
+    height: 60px;
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3);
+    
     transition: all 0.3s ease;
 }
 
 .logo-icon i {
-    color: #f59e0b;
+    color: #c7b04c;
     font-size: 1.3rem;
     animation: planeFloat 3s ease-in-out infinite;
 }
@@ -265,7 +227,8 @@
 }
 
 .brand-highlight {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -279,7 +242,7 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+    background: linear-gradient(90deg, transparent, #c7b04c, transparent);
     animation: shimmer 2s ease-in-out infinite;
 }
 
@@ -294,93 +257,10 @@
     }
 }
 
-/* Language Selector - Desktop */
-.header-actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
-    z-index: 1002;
-}
 
-.language-selector {
-    position: relative;
-    z-index: 1002;
-}
 
-.lang-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1rem;
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    border: 2px solid transparent;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    color: #1e3a5f;
-}
 
-.lang-btn:hover {
-    background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
-    border-color: #f59e0b;
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
-    transform: translateY(-2px);
-}
 
-.lang-btn i:first-child {
-    color: #f59e0b;
-    font-size: 1.1rem;
-}
-
-.lang-dropdown {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    min-width: 150px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 1003;
-}
-
-.language-selector:hover .lang-dropdown,
-.language-selector.active .lang-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.lang-option {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    color: #475569;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border-radius: 8px;
-    margin: 0.25rem;
-}
-
-.lang-option:hover {
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    color: #1e3a5f;
-}
-
-.lang-option.active {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    color: white;
-}
-
-.flag {
-    font-size: 1.2rem;
-}
 
 /* Mobile Toggle */
 .mobile-toggle {
@@ -395,13 +275,13 @@
 .mobile-toggle .bar {
     width: 25px;
     height: 3px;
-    background: linear-gradient(90deg, #1e3a5f, #f59e0b);
+    background: linear-gradient(90deg, #1e3a5f, #c7b04c);
     border-radius: 3px;
     transition: all 0.3s ease;
 }
 
 .mobile-toggle:hover .bar {
-    background: linear-gradient(90deg, #f59e0b, #d97706);
+    background: linear-gradient(90deg, #c7b04c, #c7b04c);
 }
 
 .mobile-toggle.active .bar:nth-child(1) {
@@ -472,7 +352,7 @@
 }
 
 .mobile-lang-title i {
-    color: #f59e0b;
+    color: #c7b04c;
     font-size: 1.2rem;
 }
 
@@ -506,14 +386,14 @@
 }
 
 .mobile-lang-option i.fa-check {
-    color: #f59e0b;
+    color: #c7b04c;
     font-size: 1.1rem;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .mobile-lang-option.active {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
     color: white;
     box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
 }
@@ -533,7 +413,7 @@
 
 /* Gold Animation for Active Link */
 .nav-link.active {
-    color: #f59e0b;
+    color: #c7b04c;
     font-weight: 600;
 }
 
@@ -631,92 +511,6 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             mobileMenu.classList.remove('active');
             mobileToggle.classList.remove('active');
-        });
-    });
-    
-    // Desktop Language selector - Toggle on click
-    const langToggle = document.getElementById('langToggle');
-    const langSelector = document.querySelector('.language-selector');
-    const langOptions = document.querySelectorAll('.lang-option');
-    
-    if (langToggle) {
-        langToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            langSelector.classList.toggle('active');
-        });
-    }
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (langSelector && !langSelector.contains(e.target)) {
-            langSelector.classList.remove('active');
-        }
-    });
-    
-    langOptions.forEach(option => {
-        option.addEventListener('click', function(e) {
-            e.preventDefault();
-            const lang = this.dataset.lang;
-            
-            // Update button text
-            if (langToggle) {
-                langToggle.querySelector('span').textContent = lang.toUpperCase();
-            }
-            
-            // Update active state for desktop
-            langOptions.forEach(opt => opt.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Update mobile language options
-            const mobileLangOptions = document.querySelectorAll('.mobile-lang-option');
-            mobileLangOptions.forEach(opt => {
-                if (opt.dataset.lang === lang) {
-                    opt.classList.add('active');
-                } else {
-                    opt.classList.remove('active');
-                }
-            });
-            
-            // Close dropdown
-            if (langSelector) {
-                langSelector.classList.remove('active');
-            }
-            
-            console.log('Language changed to:', lang);
-        });
-    });
-    
-    // Mobile Language selector
-    const mobileLangOptions = document.querySelectorAll('.mobile-lang-option');
-    
-    mobileLangOptions.forEach(option => {
-        option.addEventListener('click', function(e) {
-            e.preventDefault();
-            const lang = this.dataset.lang;
-            
-            // Update button text for desktop
-            if (langToggle) {
-                langToggle.querySelector('span').textContent = lang.toUpperCase();
-            }
-            
-            // Update active state for mobile
-            mobileLangOptions.forEach(opt => opt.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Update desktop language options
-            langOptions.forEach(opt => {
-                if (opt.dataset.lang === lang) {
-                    opt.classList.add('active');
-                } else {
-                    opt.classList.remove('active');
-                }
-            });
-            
-            // Close mobile menu
-            mobileMenu.classList.remove('active');
-            mobileToggle.classList.remove('active');
-            
-            console.log('Language changed to:', lang);
         });
     });
     

@@ -19,8 +19,8 @@
         align-items: center;
         justify-content: center;
         overflow: hidden;
-          margin-top: 0;
-    padding-top: 6rem;
+        margin-top: 0;
+        padding-top: 5rem;
         
     }
 
@@ -99,7 +99,7 @@
         max-width: 1280px;
         margin: 0 auto;
         padding: 0 1rem;
-        padding-top: 8rem;
+        padding-top: 4rem;
         text-align: center;
         animation: fadeInUp 0.8s ease-out;
     }
@@ -120,13 +120,22 @@
         font-weight: 700;
         margin-bottom: 1.5rem;
         line-height: 1.2;
+        color: #1e3a5f;
     }
 
     .hero-title .brand-name {
-        background: linear-gradient(135deg, #1e3a5f 0%, #f59e0b 50%, #3b82f6 100%);
+        background: linear-gradient(135deg, #1e3a5f 0%, #c7b04c 50%, #3b82f6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        animation: shimmer 3s linear infinite;
+        background-size: 200% auto;
+    }
+
+    @keyframes shimmer {
+        to {
+            background-position: 200% center;
+        }
     }
 
     .hero-subtitle {
@@ -171,7 +180,7 @@
         font-size: 2.5rem;
         font-weight: 700;
         margin-bottom: 1.5rem;
-        background: linear-gradient(135deg, #1e3a5f, #f59e0b);
+        background: linear-gradient(135deg, #1e3a5f, #c7b04c);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -234,7 +243,7 @@
         font-size: clamp(2.5rem, 5vw, 3.5rem);
         font-weight: 700;
         margin-bottom: 1rem;
-        background: linear-gradient(135deg, #1e3a5f, #f59e0b, #1e3a5f);
+        background: linear-gradient(135deg, #1e3a5f, #c7b04c, #1e3a5f);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -296,14 +305,14 @@
 
     .value-icon {
         font-size: 2rem;
-        color: #f59e0b;
+        color: #c7b04c;
     }
 
     .value-title {
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 0.75rem;
-        color: #f59e0b;
+        color: #c7b04c;
     }
 
     .value-description {
@@ -346,7 +355,7 @@
     .stat-number {
         font-size: clamp(2.5rem, 5vw, 4rem);
         font-weight: 700;
-        color: #f59e0b;
+        color: #c7b04c;
         margin-bottom: 0.5rem;
     }
 
@@ -437,7 +446,7 @@
 
     .contact-icon {
         font-size: 1.5rem;
-        color: #f59e0b;
+        color: #c7b04c;
     }
 
     .contact-label {
@@ -451,14 +460,125 @@
         color: #64748b;
     }
 
+    /* Newsletter Section */
+    .newsletter-section {
+        background: linear-gradient(135deg, #fff, #fff);
+        border-radius: 1.5rem;
+        padding: 4rem 2rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .newsletter-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+        animation: pulse 3s ease-in-out infinite;
+    }
+
+    .newsletter-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .newsletter-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: #1e3a5f;
+        margin-bottom: 1rem;
+    }
+
+    .newsletter-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #c7b04c, #c7b04c);
+        margin: 1rem auto;
+        border-radius: 2px;
+    }
+
+    .newsletter-subtitle {
+        font-size: 1.125rem;
+        color: #64748b;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 1rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .newsletter-input {
+        flex: 1;
+        padding: 1.25rem 1.5rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: white;
+        color: #1e3a5f;
+    }
+
+    .newsletter-input:focus {
+        outline: none;
+        border-color: #c7b04c;
+        box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+    }
+
+    .newsletter-input::placeholder {
+        color: #94a3b8;
+    }
+
+    .newsletter-button {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1.25rem 2rem;
+        background: #1e3a5f;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .newsletter-button:hover {
+        background: #2c5282;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(30, 58, 95, 0.3);
+    }
+
+    .newsletter-button i {
+        transition: transform 0.3s ease;
+    }
+
+    .newsletter-button:hover i {
+        transform: translateX(4px);
+    }
+
     /* Floating Buttons */
     .floating-buttons {
         position: fixed;
-        bottom: 2rem;
+        bottom: 6rem;
         right: 2rem;
         display: flex;
         gap: 0.75rem;
-        z-index: 1000;
+        z-index: 100;
     }
 
     .float-btn {
@@ -497,6 +617,14 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+        .hero-about {
+            padding-top: 3rem;
+        }
+
+        .hero-content {
+            padding-top: 2rem;
+        }
+
         .story-section,
         .values-grid,
         .stats-grid,
@@ -510,18 +638,29 @@
 
         .floating-buttons {
             flex-direction: column;
-            bottom: 1rem;
-            right: 1rem;
+            bottom: 5rem;
+            right: 1.5rem;
+            gap: 0.75rem;
+        }
+
+        .float-btn {
+            width: 56px;
+            height: 56px;
+            padding: 0;
+            border-radius: 50%;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(74, 85, 104, 0.35);
         }
 
         .float-btn span {
             display: none;
         }
 
-        .hero-about {
-            margin-top: 4rem;
+        .float-btn i {
+            font-size: 1.5rem;
         }
-         .newsletter-form {
+
+        .newsletter-form {
             flex-direction: column;
         }
 
@@ -529,122 +668,6 @@
             padding: 3rem 1.5rem;
         }
     }
-     /* Newsletter Section */
-    .newsletter-section {
-        background: linear-gradient(135deg, #fff, #fff);
-        border-radius: 1.5rem;
-        padding: 4rem 2rem;
-        text-align: center;
-        margin-bottom: 3rem;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .newsletter-section::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-
-        animation: pulse 3s ease-in-out infinite;
-    }
-
-    .newsletter-content {
-        position: relative;
-        z-index: 1;
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
-    .newsletter-title {
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-weight: 700;
-        color: #1e3a5f;
-        margin-bottom: 1rem;
-    }
-
-    .newsletter-title::after {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, #f59e0b, #d97706);
-        margin: 1rem auto;
-        border-radius: 2px;
-    }
-
-    .newsletter-subtitle {
-        font-size: 1.125rem;
-        color: #64748b;
-        margin-bottom: 2.5rem;
-        line-height: 1.6;
-    }
-
-    .newsletter-form {
-        display: flex;
-        gap: 1rem;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .newsletter-input {
-        flex: 1;
-        padding: 1.25rem 1.5rem;
-        border: 2px solid #e5e7eb;
-        border-radius: 12px;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        background: white;
-        color: #1e3a5f;
-    }
-
-    .newsletter-input:focus {
-        outline: none;
-        border-color: #f59e0b;
-        box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
-    }
-
-    .newsletter-input::placeholder {
-        color: #94a3b8;
-    }
-
-    .newsletter-button {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 1.25rem 2rem;
-        background: #1e3a5f;
-        color: white;
-        border: none;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        white-space: nowrap;
-    }
-
-    .newsletter-button:hover {
-        background: #2c5282;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(30, 58, 95, 0.3);
-    }
-
-    .newsletter-button i {
-        transition: transform 0.3s ease;
-    }
-
-    .newsletter-button:hover i {
-        transform: translateX(4px);
-    }
-
-   
-
-       
-    
 </style>
 
 <div class="about-page">
@@ -829,30 +852,11 @@
                 </div>
             </div>
         </div>
+
+        
     </div>
 </div>
- <div class="newsletter-section">
-            <div class="newsletter-content">
-                <h2 class="newsletter-title">Stay Updated</h2>
-                <p class="newsletter-subtitle">
-                    Get the latest off-plan property listings and investment insights delivered to your inbox.
-                </p>
-                <form class="newsletter-form">
-                    <input 
-                        type="email" 
-                        placeholder="Enter your email address" 
-                        class="newsletter-input"
-                        required
-                    >
-                    <button type="submit" class="newsletter-button">
-                        Subscribe
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- Floating Action Buttons -->
 <div class="floating-buttons">
     <a href="tel:+971-XXX-XXXX" class="float-btn">

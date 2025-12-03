@@ -40,6 +40,16 @@
         opacity: 0.25;
         pointer-events: none;
         z-index: 1;
+        animation: slowZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes slowZoom {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(1.1);
+        }
     }
 
     .hero-container {
@@ -68,7 +78,7 @@
     }
 
     .heading-line-2 {
-        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -93,10 +103,13 @@
         margin-bottom: 0.5rem;
     }
 
-    .smart-text {
-        color: #f59e0b;
-        font-weight: 600;
-    }
+  .smart-text {
+    background: linear-gradient(90deg, #c7b04c 0%, #c7b04c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
 
     /* Statistics Card */
     .stats-card {
@@ -130,7 +143,7 @@
     }
 
     .stats-highlight {
-        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -164,7 +177,7 @@
     }
 
     .stat-number.gold {
-        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -186,11 +199,11 @@
     /* Floating Action Buttons */
     .floating-buttons {
         position: fixed;
-        bottom: 2rem;
+        bottom: 6rem;
         right: 2rem;
         display: flex;
         gap: 1rem;
-        z-index: 1000;
+        z-index: 100;
         animation: fadeInUp 1s ease-out 0.6s backwards;
     }
 
@@ -236,64 +249,408 @@
     }
 
     /* FIX: Make language dropdown visible on mobile */
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
 
-    /* Allow dropdown to overflow */
-    nav, header, .navbar, .top-bar {
-        overflow: visible !important;
+        /* Allow dropdown to overflow */
+        nav, header, .navbar, .top-bar {
+            overflow: visible !important;
+        }
+
+        /* Fix container that clips the dropdown */
+        .hero-section {
+            overflow: visible !important;
+            padding-top: 120px !important; /* Prevent overlap */
+        }
+
+        /* Ensure dropdown shows above hero background */
+        .language-selector,
+        .language-dropdown {
+            position: relative !important;
+            z-index: 9999 !important;
+        }
+
+        /* Mobile menu spacing fix */
+        .navbar-menu {
+            margin-top: 10px !important;
+        }
+
+        /* Dropdown menu sizing for small screens */
+        .language-dropdown select,
+        .language-dropdown ul {
+            font-size: 1rem !important;
+            padding: 0.6rem 1rem !important;
+        }
+
+        /* Mobile: Stack buttons vertically and make circular */
+        .floating-buttons {
+            flex-direction: column;
+            bottom: 5rem;
+            right: 1.5rem;
+            gap: 0.75rem;
+        }
+
+        .float-btn {
+            width: 56px;
+            height: 56px;
+            padding: 0;
+            border-radius: 50%;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(71, 85, 105, 0.35);
+        }
+
+        .float-btn span {
+            display: none;
+        }
+
+        .float-btn i {
+            font-size: 1.5rem;
+        }
     }
 
-    /* Fix container that clips the dropdown */
-    .hero-section {
-        overflow: visible !important;
-        padding-top: 120px !important; /* Prevent overlap */
+    /* FIX: Absolute dropdowns ALWAYS display above hero background */
+    .hero-background {
+        z-index: 1 !important;
+    }
+    header, nav, .navbar {
+        z-index: 5000 !important;
+    }
+    .language-selector, .language-dropdown {
+        z-index: 99999 !important;
     }
 
-    /* Ensure dropdown shows above hero background */
-    .language-selector,
-    .language-dropdown {
-        position: relative !important;
-        z-index: 9999 !important;
+     /* Newsletter Section */
+    .newsletter-section {
+        background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+        border-radius: 20px;
+        padding: 60px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.8s ease-out 0.5s backwards;
+        max-width: 1400px;
+        margin: 4rem auto;
     }
 
-    /* Mobile menu spacing fix */
-    .navbar-menu {
-        margin-top: 10px !important;
+    .newsletter-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+        animation: rotate 20s linear infinite;
     }
 
-    /* Dropdown menu sizing for small screens */
-    .language-dropdown select,
-    .language-dropdown ul {
-        font-size: 1rem !important;
-        padding: 0.6rem 1rem !important;
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
     }
-}
 
-/* FIX: Absolute dropdowns ALWAYS display above hero background */
-.hero-background {
-    z-index: 1 !important;
-}
-header, nav, .navbar {
-    z-index: 5000 !important;
-}
-.language-selector, .language-dropdown {
-    z-index: 99999 !important;
-}
-
-.hero-background {
-    animation: slowZoom 20s ease-in-out infinite alternate;
-}
-
-@keyframes slowZoom {
-    from {
-        transform: scale(1);
+    .newsletter-content {
+        position: relative;
+        z-index: 1;
     }
-    to {
-        transform: scale(1.1);
+
+    .newsletter-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: white;
+        font-weight: 700;
     }
-}
 
+    .newsletter-section h2 .highlight {
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 
+    .newsletter-section p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 35px;
+        font-size: 1.05rem;
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 15px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .newsletter-form input {
+        flex: 1;
+        padding: 18px 25px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        font-size: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .newsletter-form input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .newsletter-form input:focus {
+        outline: none;
+        border-color: #d4a574;
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .newsletter-form button {
+        padding: 18px 40px;
+        background: linear-gradient(135deg,  #c7b04c 0%, #c7b04c 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+    }
+
+    .newsletter-form button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+    }
+.partners-wrapper {
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        padding: 2rem 2rem 6rem;
+    }
+
+    .partners-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .partners-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .partners-badge {
+        display: inline-block;
+        background: #fff7e6;
+        color: #c7b04c;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .partners-header h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 700;
+        color: #1e3a5f;
+        margin-bottom: 0.5rem;
+    }
+
+    .partners-highlight {
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .partners-subtitle {
+        font-size: 1.1rem;
+        color: #64748b;
+        max-width: 650px;
+        margin: 0 auto;
+    }
+
+    .carousel-wrapper {
+        position: relative;
+        overflow: hidden;
+        padding: 40px 0;
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 24px;
+        padding: 0 80px;
+    }
+
+    .partner-card {
+        flex: 0 0 calc(33.333% - 16px);
+        min-width: calc(33.333% - 16px);
+        background: white;
+        border-radius: 20px;
+        padding: 3rem 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        border: 2px solid transparent;
+    }
+
+    .partner-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        border-color: #f0f1f3;
+    }
+
+    .partner-card.highlighted {
+        border-color: #c7b04c;
+        box-shadow: 0 12px 32px rgba(199, 176, 76, 0.15);
+        transform: scale(1.05);
+    }
+
+    .partner-card.highlighted:hover {
+        transform: scale(1.05) translateY(-8px);
+    }
+
+    .partner-logo-wrapper {
+        width: 140px;
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8fafc;
+        border-radius: 16px;
+        padding: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .partner-card:hover .partner-logo-wrapper {
+        background: #f1f5f9;
+    }
+
+    .partner-logo {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .partner-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1e293b;
+        text-align: center;
+        transition: color 0.3s ease;
+    }
+
+    .partner-card.highlighted .partner-name {
+        color: #c7b04c;
+    }
+
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: white;
+        border: 2px solid #c7b04c;
+        color: #c7b04c;
+        font-size: 28px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 10;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-btn:hover {
+        background: #c7b04c;
+        color: white;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 12px 32px rgba(199, 176, 76, 0.3);
+    }
+
+    .nav-btn:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+
+    .nav-btn.prev {
+        left: 0;
+    }
+
+    .nav-btn.next {
+        right: 0;
+    }
+
+    .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 3rem;
+    }
+
+    .indicator-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #e2e8f0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .indicator-dot.active {
+        background: #c7b04c;
+        width: 32px;
+        border-radius: 6px;
+    }
+
+    .indicator-dot:hover {
+        background: #cbd5e1;
+    }
+
+    .indicator-dot.active:hover {
+        background: #b8a044;
+    }
+
+    @media (max-width: 968px) {
+        .partner-card {
+            flex: 0 0 calc(50% - 12px);
+            min-width: calc(50% - 12px);
+        }
+
+        .carousel-track {
+            padding: 0 60px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .partner-card {
+            flex: 0 0 100%;
+            min-width: 100%;
+            padding: 2rem 1.5rem;
+        }
+
+        .carousel-track {
+            padding: 0 50px;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            width: 48px;
+            height: 48px;
+            font-size: 24px;
+        }
+
+        .partner-logo-wrapper {
+            width: 120px;
+            height: 120px;
+        }
+
+        .partners-wrapper {
+            padding: 4rem 1rem;
+        }
+    }
 </style>
 
 <section class="hero-section">
@@ -365,15 +722,16 @@ header, nav, .navbar {
         </div>
     </div>
 </section>
+
 <!-- Exclusive Properties Section -->
 <section class="exclusive-section" style="padding: 6rem 2rem; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); text-align:center;">
 
     <!-- Badge -->
-    <div style="display:inline-block; background: #fff7e6; color:#d97706; padding:0.4rem 1rem; border-radius:20px; font-weight:600; font-size:0.9rem; margin-bottom:1rem;">PREMIUM SELECTION</div>
+    <div style="display:inline-block; background: #fff7e6; color:#c7b04c; padding:0.4rem 1rem; border-radius:20px; font-weight:600; font-size:0.9rem; margin-bottom:1rem;">PREMIUM SELECTION</div>
 
     <!-- Heading -->
     <h2 style="font-size:clamp(2rem,4vw,3.2rem); font-weight:700; color:#1e3a5f; margin-bottom:0.5rem;">
-        Exclusive <span style="background: linear-gradient(135deg,#f59e0b,#d97706); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Properties</span>
+        Exclusive <span style="background: linear-gradient(135deg,#c7b04c,#c7b04c); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Properties</span>
     </h2>
 
     <!-- Subtitle -->
@@ -381,60 +739,361 @@ header, nav, .navbar {
         Discover premium off-plan properties from trusted developers across the UAE
     </p>
 
+   <!-- Exclusive Properties Section -->
+<section class="exclusive-section" style="padding: 4rem 2rem 6rem; background: #f8fafb;">
+
     <!-- Search + Filters Container -->
-    <div style="background:#ffffff; border-radius:20px; padding:2rem; box-shadow:0 10px 30px rgba(0,0,0,0.07); max-width:1100px; margin:0 auto 3rem;">
+    <div style="background:#ffffff; border-radius:16px; padding:2rem 2rem 1.5rem; box-shadow:0 4px 20px rgba(0,0,0,0.06); max-width:1300px; margin:0 auto 2.5rem;">
 
         <!-- Search bar -->
-        <div style="display:flex; align-items:center; gap:1rem; background:#f8fafc; padding:1rem 1.4rem; border-radius:12px; border:1px solid #e2e8f0; margin-bottom:1.5rem;">
-            <i class="fas fa-search" style="color:#d1d5db; font-size:1.2rem;"></i>
-            <input type="text" placeholder="Search properties by name, location, or developer..." style="flex:1; border:none; background:transparent; font-size:1rem; outline:none; color:#475569;">
+        <div style="display:flex; align-items:center; gap:1rem; background:#ffffff; padding:1rem 1.5rem; border-radius:10px; border:1px solid #e5e7eb; margin-bottom:1.5rem;">
+            <i class="fas fa-search" style="color:#c7b04c; font-size:1.1rem;"></i>
+            <input type="text" placeholder="Search properties by name, location, or developer..." style="flex:1; border:none; background:transparent; font-size:0.95rem; outline:none; color:#475569;">
         </div>
 
-        <!-- Filters -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1rem; margin-bottom:1rem;">
-            <select style="padding:0.8rem 1rem; border-radius:10px; border:1px solid #e2e8f0; font-size:0.95rem; color:#475569;">
+        <!-- Refine Your Search Label -->
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
+            <i class="fas fa-sliders-h" style="color:#c7b04c; font-size:1rem;"></i>
+            <span style="font-weight:600; color:#1e293b; font-size:0.95rem;">Refine Your Search</span>
+        </div>
+
+        <!-- Filters Grid -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-bottom:1.5rem;">
+            <select style="padding:0.75rem 1rem; border-radius:10px; border:1px solid #e5e7eb; font-size:0.9rem; color:#475569; background:#ffffff; cursor:pointer;">
                 <option>All Developers</option>
+                <option>Nakheel</option>
+                <option>Damac Properties</option>
+                <option>Aldar Properties</option>
+                <option>Sobha Realty</option>
             </select>
-            <select style="padding:0.8rem 1rem; border-radius:10px; border:1px solid #e2e8f0; font-size:0.95rem; color:#475569;">
-                <option>All Types</option>
+            <select style="padding:0.75rem 1rem; border-radius:10px; border:1px solid #e5e7eb; font-size:0.9rem; color:#475569; background:#ffffff; cursor:pointer;">
+                <option> All Types</option>
+                <option>Apartment</option>
+                <option>Townhouse</option>
+                <option>Penthouse</option>
+                 <option>Villas</option>
             </select>
-            <select style="padding:0.8rem 1rem; border-radius:10px; border:1px solid #e2e8f0; font-size:0.95rem; color:#475569;">
+            <select style="padding:0.75rem 1rem; border-radius:10px; border:1px solid #e5e7eb; font-size:0.9rem; color:#475569; background:#ffffff; cursor:pointer;">
                 <option>All Prices</option>
+                <option>Under 2M AED</option>
+                <option>2M - 5M AED</option>
+                <option>5M - 10M AED</option>
+                <option>Above 10M AED</option>
             </select>
-            <select style="padding:0.8rem 1rem; border-radius:10px; border:1px solid #e2e8f0; font-size:0.95rem; color:#475569;">
+            <select style="padding:0.75rem 1rem; border-radius:10px; border:1px solid #e5e7eb; font-size:0.9rem; color:#475569; background:#ffffff; cursor:pointer;">
                 <option>All Locations</option>
+                <option>Palm Jumeirah</option>
+                <option>Downtown Dubai</option>
+                <option>Yas Island</option>
+                <option>Mohammed Bin Rashid City</option>
             </select>
-            <select style="padding:0.8rem 1rem; border-radius:10px; border:1px solid #e2e8f0; font-size:0.95rem; color:#475569;">
+            <select style="padding:0.75rem 1rem; border-radius:10px; border:1px solid #e5e7eb; font-size:0.9rem; color:#475569; background:#ffffff; cursor:pointer;">
                 <option>All Bedrooms</option>
+                <option>Studio</option>
+                <option>1 Bedroom</option>
+                <option>2 Bedrooms</option>
+                <option>3 Bedrooms</option>
+                <option>4+ Bedrooms</option>
             </select>
         </div>
 
-        <!-- Result Count -->
-        <div style="text-align:left; font-size:0.95rem; color:#475569; font-weight:500;">
-            <span style="color:#1e3a5f; font-weight:600;">8 Properties Found</span> of 8 total
+        <!-- Result Count + Clear Filters -->
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.9rem;">
+            <div style="color:#64748b; font-weight:500;">
+                <i class="fas fa-home" style="color:#c7b04c; margin-right:0.3rem;"></i>
+                <span style="color:#1e293b; font-weight:600;">4 Properties Found</span> of 8 total
+            </div>
+            <a href="#" style="color:#c7b04c; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:0.3rem;">
+                Clear Filters <i class="fas fa-times" style="font-size:0.8rem;"></i>
+            </a>
         </div>
     </div>
 
     <!-- Properties Grid -->
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; max-width:1200px; margin:0 auto;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; max-width:1300px; margin:0 auto;">
 
-        <!-- Example Property Card -->
-        <div style="background:white; border-radius:18px; box-shadow:0 10px 25px rgba(0,0,0,0.08); overflow:hidden;">
-            <div style="position:relative;">
-                <img src="https://via.placeholder.com/400x260" style="width:100%; height:200px; object-fit:cover;">
-                <span style="position:absolute; top:10px; right:10px; background:#f59e0b; color:white; padding:0.3rem 0.8rem; border-radius:8px; font-size:0.75rem; font-weight:600;">APARTMENT</span>
+        <!-- Property Card 1 - Palm Residences -->
+        <div style="background:white; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; transition:transform 0.3s ease, box-shadow 0.3s ease; position:relative;">
+            <div style="position:relative; overflow:hidden;">
+                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=500&h=350&fit=crop" style="width:100%; height:240px; object-fit:cover; transition:transform 0.3s ease;">
+                <div style="position:absolute; top:12px; left:12px; background:#1e3a5f; color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.75rem; font-weight:600; display:flex; align-items:center; gap:0.3rem;">
+                    <i class="fas fa-bed" style="font-size:0.8rem;"></i> 4 BR
+                </div>
+                <div style="position:absolute; top:12px; right:12px; background:#c7b04c; color:white; padding:0.4rem 0.9rem; border-radius:8px; font-size:0.75rem; font-weight:700;">
+                    VILLA
+                </div>
             </div>
-            <div style="padding:1.5rem; text-align:left;">
-                <h3 style="font-size:1.2rem; font-weight:700; color:#1e3a5f; margin-bottom:0.3rem;">Marina Heights</h3>
-                <p style="font-size:0.9rem; color:#64748b; margin-bottom:1rem;">Emaar Properties</p>
-                <p style="font-size:1.1rem; font-weight:700; color:#d97706; margin-bottom:1rem;">AED 2,450,000</p>
-                <a href="#" style="display:inline-block; background:#1e3a5f; color:white; padding:0.7rem 1.2rem; border-radius:10px; font-size:0.9rem; font-weight:600; text-decoration:none;">View Details</a>
+            <div style="padding:1.5rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.8rem; color:#64748b; font-size:0.85rem;">
+                    <i class="fas fa-map-marker-alt" style="color:#c7b04c;"></i>
+                    <span>Palm Jumeirah</span>
+                </div>
+                <h3 style="font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Palm Residences</h3>
+                
+                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
+                    <img src="https://via.placeholder.com/32x32" style="width:24px; height:24px; border-radius:4px;">
+                    <div>
+                        <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em;">Developer</div>
+                        <div style="font-size:0.9rem; color:#475569; font-weight:600;">Nakheel</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:1.2rem;">
+                    <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.2rem;">Starting Price</div>
+                    <div style="font-size:1.6rem; font-weight:700; color:#c7b04c;">AED 5,800,000</div>
+                </div>
+
+                <a href="{% url 'main:properties_detail' %}" style="display:block; text-align:center; background:#1e3a5f; color:white; padding:0.85rem; border-radius:10px; font-size:0.9rem; font-weight:600; text-decoration:none; transition:background 0.3s ease;">
+                    View Details <i class="fas fa-eye" style="margin-left:0.4rem;"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Property Card 2 - Downtown Villas -->
+        <div style="background:white; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; transition:transform 0.3s ease, box-shadow 0.3s ease; position:relative;">
+            <div style="position:relative; overflow:hidden;">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&h=350&fit=crop" style="width:100%; height:240px; object-fit:cover; transition:transform 0.3s ease;">
+                <div style="position:absolute; top:12px; left:12px; background:#1e3a5f; color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.75rem; font-weight:600; display:flex; align-items:center; gap:0.3rem;">
+                    <i class="fas fa-bed" style="font-size:0.8rem;"></i> 3 BR
+                </div>
+                <div style="position:absolute; top:12px; right:12px; background:#c7b04c; color:white; padding:0.4rem 0.9rem; border-radius:8px; font-size:0.75rem; font-weight:700;">
+                    VILLA
+                </div>
+            </div>
+            <div style="padding:1.5rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.8rem; color:#64748b; font-size:0.85rem;">
+                    <i class="fas fa-map-marker-alt" style="color:#c7b04c;"></i>
+                    <span>Downtown Dubai</span>
+                </div>
+                <h3 style="font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Downtown Villas</h3>
+                
+                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
+                    <img src="https://via.placeholder.com/32x32" style="width:24px; height:24px; border-radius:4px;">
+                    <div>
+                        <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em;">Developer</div>
+                        <div style="font-size:0.9rem; color:#475569; font-weight:600;">Damac Properties</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:1.2rem;">
+                    <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.2rem;">Starting Price</div>
+                    <div style="font-size:1.6rem; font-weight:700; color:#c7b04c;">AED 4,200,000</div>
+                </div>
+
+                <a href="{% url 'main:properties_detail' %}" style="display:block; text-align:center; background:#1e3a5f; color:white; padding:0.85rem; border-radius:10px; font-size:0.9rem; font-weight:600; text-decoration:none; transition:background 0.3s ease;">
+                    View Details <i class="fas fa-eye" style="margin-left:0.4rem;"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Property Card 3 - Yas Island Estate -->
+        <div style="background:white; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; transition:transform 0.3s ease, box-shadow 0.3s ease; position:relative;">
+            <div style="position:relative; overflow:hidden;">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&h=350&fit=crop" style="width:100%; height:240px; object-fit:cover; transition:transform 0.3s ease;">
+                <div style="position:absolute; top:12px; left:12px; background:#1e3a5f; color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.75rem; font-weight:600; display:flex; align-items:center; gap:0.3rem;">
+                    <i class="fas fa-bed" style="font-size:0.8rem;"></i> 4 BR
+                </div>
+                <div style="position:absolute; top:12px; right:12px; background:#c7b04c; color:white; padding:0.4rem 0.9rem; border-radius:8px; font-size:0.75rem; font-weight:700;">
+                    VILLA
+                </div>
+            </div>
+            <div style="padding:1.5rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.8rem; color:#64748b; font-size:0.85rem;">
+                    <i class="fas fa-map-marker-alt" style="color:#c7b04c;"></i>
+                    <span>Yas Island</span>
+                </div>
+                <h3 style="font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Yas Island Estate</h3>
+                
+                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
+                 <img src="{% static 'img/hero.avif' %}" style="width:30px; height:30px; border-radius:4px;" alt="Hero Image">
+
+                    <div>
+                        <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em;">Developer</div>
+                        <div style="font-size:0.9rem; color:#475569; font-weight:600;">Aldar Properties</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:1.2rem;">
+                    <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.2rem;">Starting Price</div>
+                    <div style="font-size:1.6rem; font-weight:700; color:#c7b04c;">AED 3,800,000</div>
+                </div>
+
+                <a href="{% url 'main:properties_detail' %}" style="display:block; text-align:center; background:#1e3a5f; color:white; padding:0.85rem; border-radius:10px; font-size:0.9rem; font-weight:600; text-decoration:none; transition:background 0.3s ease;">
+                    View Details <i class="fas fa-eye" style="margin-left:0.4rem;"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Property Card 4 - Hartland Greens -->
+        <div style="background:white; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; transition:transform 0.3s ease, box-shadow 0.3s ease; position:relative;">
+            <div style="position:relative; overflow:hidden;">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&h=350&fit=crop" style="width:100%; height:240px; object-fit:cover; transition:transform 0.3s ease;">
+                <div style="position:absolute; top:12px; left:12px; background:#1e3a5f; color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.75rem; font-weight:600; display:flex; align-items:center; gap:0.3rem;">
+                    <i class="fas fa-bed" style="font-size:0.8rem;"></i> 5 BR
+                </div>
+                <div style="position:absolute; top:12px; right:12px; background:#c7b04c; color:white; padding:0.4rem 0.9rem; border-radius:8px; font-size:0.75rem; font-weight:700;">
+                    VILLA
+                </div>
+            </div>
+            <div style="padding:1.5rem;">
+                <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.8rem; color:#64748b; font-size:0.85rem;">
+                    <i class="fas fa-map-marker-alt" style="color:#c7b04c;"></i>
+                    <span>Mohammed Bin Rashid City</span>
+                </div>
+                <h3 style="font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Hartland Greens</h3>
+                
+                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
+                    <img src="https://via.placeholder.com/32x32" style="width:24px; height:24px; border-radius:4px;">
+                    <div>
+                        <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em;">Developer</div>
+                        <div style="font-size:0.9rem; color:#475569; font-weight:600;">Sobha Realty</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:1.2rem;">
+                    <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.2rem;">Starting Price</div>
+                    <div style="font-size:1.6rem; font-weight:700; color:#c7b04c;">AED 6,500,000</div>
+                </div>
+
+                <a href="{% url 'main:properties_detail' %}" style="display:block; text-align:center; background:#1e3a5f; color:white; padding:0.85rem; border-radius:10px; font-size:0.9rem; font-weight:600; text-decoration:none; transition:background 0.3s ease;">
+                    View Details <i class="fas fa-eye" style="margin-left:0.4rem;"></i>
+                </a>
             </div>
         </div>
 
     </div>
 
 </section>
+
+</section>
+
+<section class="partners-wrapper">
+    <div class="partners-container">
+        <!-- Header -->
+        <div class="partners-header">
+            <div class="partners-badge">TRUSTED PARTNERS</div>
+            <h2>
+                Our <span class="partners-highlight">Developer Partners</span>
+            </h2>
+            <p class="partners-subtitle">
+                We collaborate with the most prestigious developers in the UAE to bring you exceptional properties
+            </p>
+        </div>
+
+        <!-- Carousel -->
+        <div class="carousel-wrapper">
+            <button class="nav-btn prev" onclick="moveCarousel(-1)" aria-label="Previous">
+                &#8249;
+            </button>
+
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Partner Card 1 - Emaar -->
+                <div class="partner-card">
+                    <div class="partner-logo-wrapper">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Emaar_Properties_Logo.svg/320px-Emaar_Properties_Logo.svg.png" 
+                             alt="Emaar Properties" class="partner-logo">
+                    </div>
+                    <div class="partner-name">Emaar Properties</div>
+                </div>
+
+                <!-- Partner Card 2 - Dubai Properties (Highlighted by default) -->
+                <div class="partner-card highlighted">
+                    <div class="partner-logo-wrapper">
+                        <img src="https://dubaiproperties.ae/themes/custom/dp/logo.svg" 
+                             alt="Dubai Properties" class="partner-logo">
+                    </div>
+                    <div class="partner-name">Dubai Properties</div>
+                </div>
+
+                <!-- Partner Card 3 - Nakheel -->
+                <div class="partner-card">
+                    <div class="partner-logo-wrapper">
+                        <img src="https://www.nakheel.com/wp-content/uploads/2023/09/nakheel-logo.svg" 
+                             alt="Nakheel" class="partner-logo">
+                    </div>
+                    <div class="partner-name">Nakheel</div>
+                </div>
+
+                <!-- Partner Card 4 - Damac -->
+                <div class="partner-card">
+                    <div class="partner-logo-wrapper">
+                        <img src="https://damacproperties.com/wp-content/uploads/2023/03/damac-logo.svg" 
+                             alt="Damac Properties" class="partner-logo">
+                    </div>
+                    <div class="partner-name">Damac Properties</div>
+                </div>
+
+                <!-- Partner Card 5 - Aldar -->
+                <div class="partner-card">
+                    <div class="partner-logo-wrapper">
+                        <img src="https://www.aldar.com/themes/custom/aldar/logo.svg" 
+                             alt="Aldar Properties" class="partner-logo">
+                    </div>
+                    <div class="partner-name">Aldar Properties</div>
+                </div>
+
+                <!-- Partner Card 6 - Sobha -->
+                <div class="partner-card">
+                    <div class="partner-logo-wrapper">
+                        <img src="https://www.sobharealty.com/themes/custom/sobha/logo.svg" 
+                             alt="Sobha Realty" class="partner-logo">
+                    </div>
+                    <div class="partner-name">Sobha Realty</div>
+                </div>
+
+                <!-- Partner Card 7 - Meraas -->
+                <div class="partner-card">
+                    <div class="partner-logo-wrapper">
+                        <img src="https://www.meraas.com/themes/custom/meraas/logo.svg" 
+                             alt="Meraas" class="partner-logo">
+                    </div>
+                    <div class="partner-name">Meraas</div>
+                </div>
+
+                <!-- Partner Card 8 - Select Group -->
+                <div class="partner-card">
+                    <div class="partner-logo-wrapper">
+                        <img src="https://www.selectgroup.com/themes/custom/select/logo.svg" 
+                             alt="Select Group" class="partner-logo">
+                    </div>
+                    <div class="partner-name">Select Group</div>
+                </div>
+
+                <!-- Partner Card 9 - Azizi -->
+                <div class="partner-card">
+                    <div class="partner-logo-wrapper">
+                        <img src="https://www.azizidevelopments.com/themes/custom/azizi/logo.svg" 
+                             alt="Azizi Developments" class="partner-logo">
+                    </div>
+                    <div class="partner-name">Azizi Developments</div>
+                </div>
+            </div>
+
+            <button class="nav-btn next" onclick="moveCarousel(1)" aria-label="Next">
+                &#8250;
+            </button>
+        </div>
+
+        <!-- Indicators -->
+        <div class="carousel-indicators" id="carouselIndicators"></div>
+    </div>
+</section>
+
+
+<!-- Newsletter -->
+        <div class="newsletter-section">
+            <div class="newsletter-content">
+                <h2>Stay <span class="highlight">Updated</span></h2>
+                <p>Get the latest off-plan property insights and investment opportunities delivered to your inbox</p>
+                <form class="newsletter-form" onsubmit="alert('Newsletter signup coming soon!'); return false;">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        
+
 <!-- Floating Action Buttons -->
 <div class="floating-buttons">
     <a href="tel:+971-XXX-XXXX" class="float-btn">
@@ -484,6 +1143,109 @@ header, nav, .navbar {
 
         counters.forEach(counter => observer.observe(counter));
     });
+
+     (function() {
+        let currentIndex = 0;
+        const track = document.getElementById('carouselTrack');
+        const cards = track.querySelectorAll('.partner-card');
+        const totalCards = cards.length;
+        const indicatorsContainer = document.getElementById('carouselIndicators');
+        
+        function getCardsPerView() {
+            if (window.innerWidth <= 640) return 1;
+            if (window.innerWidth <= 968) return 2;
+            return 3;
+        }
+
+        let cardsPerView = getCardsPerView();
+        let maxIndex = Math.max(0, totalCards - cardsPerView);
+
+        function createIndicators() {
+            indicatorsContainer.innerHTML = '';
+            for (let i = 0; i <= maxIndex; i++) {
+                const dot = document.createElement('div');
+                dot.className = `indicator-dot ${i === currentIndex ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(i);
+                indicatorsContainer.appendChild(dot);
+            }
+        }
+
+        function updateCarousel() {
+            const cardWidth = cards[0].offsetWidth;
+            const gap = window.innerWidth <= 640 ? 16 : 24;
+            const offset = currentIndex * (cardWidth + gap);
+            track.style.transform = `translateX(-${offset}px)`;
+            
+            // Update indicators
+            const dots = indicatorsContainer.querySelectorAll('.indicator-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+
+            // Update highlighted card (middle card of current view)
+            cards.forEach((card, index) => {
+                const isHighlighted = index === currentIndex + Math.floor(cardsPerView / 2);
+                card.classList.toggle('highlighted', isHighlighted);
+            });
+        }
+
+        window.moveCarousel = function(direction) {
+            currentIndex += direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = 0;
+            } else if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+            
+            updateCarousel();
+        };
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const newCardsPerView = getCardsPerView();
+            if (newCardsPerView !== cardsPerView) {
+                cardsPerView = newCardsPerView;
+                maxIndex = Math.max(0, totalCards - cardsPerView);
+                currentIndex = Math.min(currentIndex, maxIndex);
+                createIndicators();
+                updateCarousel();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') window.moveCarousel(-1);
+            if (e.key === 'ArrowRight') window.moveCarousel(1);
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) {
+                window.moveCarousel(1);
+            }
+            if (touchEndX - touchStartX > 50) {
+                window.moveCarousel(-1);
+            }
+        }, { passive: true });
+
+        // Initialize
+        createIndicators();
+        updateCarousel();
+    })();
 </script>
 
 {% endblock %}

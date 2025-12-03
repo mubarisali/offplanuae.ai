@@ -19,7 +19,7 @@
     }
 
     .blog-page {
-        padding: 100px 0 60px 0;
+        padding: 140px 0 60px 0;
         position: relative;
         overflow: hidden;
     }
@@ -83,7 +83,7 @@
         align-items: center;
         gap: 8px;
         padding: 10px 24px;
-        background: linear-gradient(135deg, #d4a574 0%, #c89960 100%);
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
         color: white;
         border-radius: 50px;
         font-size: 13px;
@@ -105,12 +105,12 @@
         font-weight: 800;
         margin-bottom: 20px;
         line-height: 1.2;
-        background: linear-gradient(135deg, #2c3e50 0%, #d4a574 50%, #2c3e50 100%);
+        background: linear-gradient(135deg, #2c3e50 0%, #c7b04c 50%, #2c3e50 100%);
         background-size: 200% auto;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-       animation: shimmer 17s linear infinite;
+       animation: shimmer 25s linear infinite;
     }
 
     @keyframes shimmer {
@@ -125,41 +125,8 @@
         line-height: 1.8;
     }
 
-    /* Filter Tabs */
-    .filter-tabs {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-        margin-bottom: 60px;
-    }
 
-    .filter-btn {
-        padding: 12px 28px;
-        background: white;
-        border: 2px solid transparent;
-        border-radius: 50px;
-        color: #6c757d;
-        font-weight: 600;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .filter-btn:hover {
-        border-color: rgba(212, 165, 116, 0.5);
-        color: #d4a574;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);
-    }
-
-    .filter-btn.active {
-        background: linear-gradient(135deg, #d4a574 0%, #c89960 100%);
-        color: white;
-        border-color: #d4a574;
-        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
-    }
+    
 
     /* Blog Grid */
     .blog-container {
@@ -285,23 +252,6 @@
         transform: scale(1.1) rotate(2deg);
     }
 
-    /* Category Badge on Image */
-    .category-overlay {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        padding: 8px 18px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 50px;
-        font-size: 12px;
-        font-weight: 700;
-        color: #d4a574;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        z-index: 2;
-    }
 
     /* Card Content */
     .card-content {
@@ -318,19 +268,6 @@
         flex-wrap: wrap;
     }
 
-    .meta-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        color: #999;
-        font-size: 13px;
-        font-weight: 500;
-    }
-
-    .meta-item i {
-        color: #d4a574;
-        font-size: 12px;
-    }
 
     .card-title {
         font-size: 1.4rem;
@@ -346,7 +283,7 @@
     }
 
     .blog-card:hover .card-title {
-        color: #d4a574;
+        color: #c7b04c;
     }
 
     .card-excerpt {
@@ -368,7 +305,7 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        color: #d4a574;
+        color: #c7b04c;
         font-weight: 600;
         font-size: 0.9rem;
         text-decoration: none;
@@ -396,9 +333,9 @@
     .btn-load-more {
         padding: 16px 50px;
         background: white;
-        border: 2px solid #d4a574;
+        border: 2px solid #c7b04c;
         border-radius: 50px;
-        color: #d4a574;
+        color: #c7b04c;
         font-weight: 700;
         font-size: 1rem;
         cursor: pointer;
@@ -407,49 +344,50 @@
     }
 
     .btn-load-more:hover {
-        background: linear-gradient(135deg, #d4a574 0%, #c89960 100%);
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
         color: white;
         transform: translateY(-3px);
         box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
     }
 
     /* Floating Buttons */
-    .floating-btns {
+    .floating-buttons {
         position: fixed;
-        bottom: 30px;
-        right: 30px;
+        bottom: 6rem;
+        right: 2rem;
         display: flex;
-        flex-direction: column;
-        gap: 12px;
-        z-index: 1000;
+        gap: 1rem;
+        z-index: 100;
+        animation: fadeInUp 1s ease-out 0.6s backwards;
     }
 
-    .floating-btn {
+    .float-btn {
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 14px 24px;
-        background: #4a5568;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        background: #475569;
         color: white;
         border: none;
         border-radius: 50px;
         font-weight: 600;
-        font-size: 0.85rem;
+        font-size: 0.875rem;
         text-transform: uppercase;
+        letter-spacing: 0.05em;
         cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s;
+        box-shadow: 0 10px 30px rgba(71, 85, 105, 0.3);
+        transition: all 0.3s ease;
         text-decoration: none;
     }
 
-    .floating-btn:hover {
-        background: #3a4558;
+    .float-btn:hover {
+        background: #334155;
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 15px 40px rgba(71, 85, 105, 0.4);
     }
 
-    .floating-btn i {
-        font-size: 18px;
+    .float-btn i {
+        font-size: 1.25rem;
     }
 
     /* Responsive */
@@ -470,7 +408,7 @@
 
     @media (max-width: 768px) {
         .blog-page {
-            padding: 80px 0 40px 0;
+            padding: 120px 0 40px 0;
         }
 
         .blog-grid {
@@ -498,29 +436,31 @@
             height: 220px;
         }
 
-        .filter-tabs {
-            gap: 10px;
+       
+
+        /* Mobile: Stack buttons vertically and make circular */
+        .floating-buttons {
+            flex-direction: column;
+            bottom: 5rem;
+            right: 1.5rem;
+            gap: 0.75rem;
         }
 
-        .filter-btn {
-            padding: 10px 20px;
-            font-size: 0.85rem;
+        .float-btn {
+            width: 56px;
+            height: 56px;
+            padding: 0;
+            border-radius: 50%;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(71, 85, 105, 0.35);
         }
 
-        .floating-btns {
-            bottom: 20px;
-            right: 20px;
-        }
-
-        .floating-btn span {
+        .float-btn span {
             display: none;
         }
 
-        .floating-btn {
-            width: 50px;
-            height: 50px;
-            padding: 0;
-            justify-content: center;
+        .float-btn i {
+            font-size: 1.5rem;
         }
     }
 
@@ -557,14 +497,7 @@
             Stay updated with the latest trends, market insights, and expert advice on UAE's off-plan property market
         </p>
 
-        <!-- Filter Tabs -->
-        <div class="filter-tabs">
-            <button class="filter-btn active">All Articles</button>
-            <button class="filter-btn">Market Insights</button>
-            <button class="filter-btn">Investment Tips</button>
-            <button class="filter-btn">Legal Guide</button>
-            <button class="filter-btn">Technology</button>
-        </div>
+        
     </section>
 
     <!-- Blog Grid -->
@@ -574,7 +507,7 @@
             <article class="blog-card featured">
                 <div class="card-image">
                     <img src="{% static 'img/hero.avif' %}" alt="Blog post">
-                    <div class="category-overlay">Market Insights</div>
+                    
                 </div>
                 <div class="card-content">
                     <div class="card-meta">
@@ -582,10 +515,7 @@
                             <i class="far fa-calendar"></i>
                             <span>Nov 20, 2025</span>
                         </div>
-                        <div class="meta-item">
-                            <i class="far fa-clock"></i>
-                            <span>5 min read</span>
-                        </div>
+                        
                         <div class="meta-item">
                             <i class="far fa-user"></i>
                             <span>Sarah Ahmed</span>
@@ -595,7 +525,7 @@
                     <p class="card-excerpt">
                         Explore the most promising off-plan projects launching this year in Dubai's thriving real estate market. Discover exclusive opportunities.
                     </p>
-                    <a href="#" class="read-more">
+                    <a href="{% url 'main:blog_detail' 1 %}" class="read-more">
                         Read Full Article
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -606,7 +536,7 @@
             <article class="blog-card">
                 <div class="card-image">
                     <img src="{% static 'img/hero.avif' %}" alt="Blog post">
-                    <div class="category-overlay">Technology</div>
+                    
                 </div>
                 <div class="card-content">
                     <div class="card-meta">
@@ -614,13 +544,10 @@
                             <i class="far fa-calendar"></i>
                             <span>Nov 18, 2025</span>
                         </div>
-                        <div class="meta-item">
-                            <i class="far fa-clock"></i>
-                            <span>7 min read</span>
-                        </div>
+                       
                     </div>
                     <h3 class="card-title">How AI is Transforming Property Investment</h3>
-                    <a href="#" class="read-more">
+                    <a href="{% url 'main:blog_detail' 1 %}" class="read-more">
                         Read More
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -630,7 +557,7 @@
             <article class="blog-card">
                 <div class="card-image">
                     <img src="{% static 'img/hero.avif' %}" alt="Blog post">
-                    <div class="category-overlay">Legal Guide</div>
+                    
                 </div>
                 <div class="card-content">
                     <div class="card-meta">
@@ -638,13 +565,10 @@
                             <i class="far fa-calendar"></i>
                             <span>Nov 15, 2025</span>
                         </div>
-                        <div class="meta-item">
-                            <i class="far fa-clock"></i>
-                            <span>10 min read</span>
-                        </div>
+                        
                     </div>
                     <h3 class="card-title">Understanding UAE Real Estate Laws</h3>
-                    <a href="#" class="read-more">
+                    <a href="{% url 'main:blog_detail' 2 %}" class="read-more">
                         Read More
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -654,7 +578,7 @@
             <article class="blog-card">
                 <div class="card-image">
                     <img src="{% static 'img/hero.avif' %}" alt="Blog post">
-                    <div class="category-overlay">Investment</div>
+                    
                 </div>
                 <div class="card-content">
                     <div class="card-meta">
@@ -662,10 +586,7 @@
                             <i class="far fa-calendar"></i>
                             <span>Nov 12, 2025</span>
                         </div>
-                        <div class="meta-item">
-                            <i class="far fa-clock"></i>
-                            <span>6 min read</span>
-                        </div>
+                        
                     </div>
                     <h3 class="card-title">Investment Tips for First-Time Buyers</h3>
                     <a href="#" class="read-more">
@@ -678,7 +599,7 @@
             <article class="blog-card">
                 <div class="card-image">
                     <img src="{% static 'img/hero.avif' %}" alt="Blog post">
-                    <div class="category-overlay">Market Insights</div>
+                    
                 </div>
                 <div class="card-content">
                     <div class="card-meta">
@@ -686,13 +607,10 @@
                             <i class="far fa-calendar"></i>
                             <span>Nov 10, 2025</span>
                         </div>
-                        <div class="meta-item">
-                            <i class="far fa-clock"></i>
-                            <span>8 min read</span>
-                        </div>
+                       
                     </div>
                     <h3 class="card-title">Abu Dhabi's Emerging Property Hotspots</h3>
-                    <a href="#" class="read-more">
+                    <a href="{% url 'main:blog_detail' 3 %}" class="read-more">
                         Read More
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -702,7 +620,7 @@
             <article class="blog-card">
                 <div class="card-image">
                     <img src="{% static 'img/hero.avif' %}" alt="Blog post">
-                    <div class="category-overlay">Finance</div>
+                    
                 </div>
                 <div class="card-content">
                     <div class="card-meta">
@@ -710,13 +628,10 @@
                             <i class="far fa-calendar"></i>
                             <span>Nov 8, 2025</span>
                         </div>
-                        <div class="meta-item">
-                            <i class="far fa-clock"></i>
-                            <span>9 min read</span>
-                        </div>
+                        
                     </div>
                     <h3 class="card-title">Financing Your Off-Plan Property Purchase</h3>
-                    <a href="#" class="read-more">
+                    <a href="{% url 'main:blog_detail' 4 %}" class="read-more">
                         Read More
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -734,12 +649,12 @@
 </div>
 
 <!-- Floating Action Buttons -->
-<div class="floating-btns">
-    <a href="tel:+971-XXX-XXXX" class="floating-btn">
+<div class="floating-buttons">
+    <a href="tel:+971-XXX-XXXX" class="float-btn">
         <i class="fas fa-phone"></i>
         <span>Call Back</span>
     </a>
-    <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="floating-btn">
+    <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="float-btn">
         <i class="fab fa-whatsapp"></i>
         <span>WhatsApp</span>
     </a>
