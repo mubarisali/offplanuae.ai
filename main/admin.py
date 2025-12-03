@@ -2,21 +2,22 @@
 
 # main/admin.py
 from django.contrib import admin
-from .models import Property, PropertyImage, BlogPost, ContactSubmission, Newsletter
+from .models import *
+
 
 class PropertyImageInline(admin.TabularInline):
-    model = PropertyImage
+    model = PropertyImages
     extra = 3
+
+admin.site.register(Developer)
 
 @admin.register(Property)
 class PropertyAdmin(admin.ModelAdmin):
-    list_display = ['title', 'property_type', 'location', 'price', 'bedrooms', 'is_featured', 'created_at']
-    list_filter = ['property_type', 'is_featured', 'status', 'created_at']
+    list_display = ['title', 'slug','description']
+    list_filter = ['title','created_at']
     search_fields = ['title', 'location', 'description']
     prepopulated_fields = {'slug': ('title',)}
     inlines = [PropertyImageInline]
-    list_editable = ['is_featured']
-    date_hierarchy = 'created_at'
 
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):

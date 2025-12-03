@@ -96,6 +96,243 @@
     .gallery-item:hover {
         transform: scale(1.05);
     }
+
+    .main-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+    }
+
+    .sidebar-container {
+        position: sticky;
+        top: 2rem;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    /* ============================================
+       RESPONSIVE MEDIA QUERIES
+       ============================================ */
+
+    /* Laptop/Tablet (max-width: 1199px) */
+    @media (max-width: 1199px) {
+        .main-grid {
+            grid-template-columns: 1fr !important;
+            gap: 3rem;
+        }
+
+        .sidebar-container {
+            position: static !important;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    }
+
+    /* Tablet (max-width: 991px) */
+    @media (max-width: 991px) {
+        section:first-of-type {
+            min-height: 50vh !important;
+        }
+
+        section:first-of-type > div {
+            padding: 5rem 1.5rem 4rem !important;
+        }
+
+        section:first-of-type > div > a {
+            top: 1.5rem !important;
+            left: 1.5rem !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+        }
+
+        section:last-of-type {
+            padding: 3rem 1.5rem !important;
+        }
+
+        .sidebar-container {
+            padding: 1.75rem !important;
+        }
+    }
+
+    /* Mobile (max-width: 767px) */
+    @media (max-width: 767px) {
+        section:first-of-type {
+            min-height: auto !important;
+        }
+
+        section:first-of-type > div {
+            padding: 3rem 1rem 2rem !important;
+        }
+
+        section:first-of-type > div > a {
+            position: static !important;
+            margin-bottom: 1.5rem !important;
+            width: fit-content !important;
+        }
+
+        section:first-of-type > div > div > div:first-child {
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+            text-align: center !important;
+        }
+
+        section:first-of-type > div > div > div:nth-child(3) {
+            flex-direction: column !important;
+            gap: 1rem !important;
+        }
+
+        section:last-of-type {
+            padding: 2rem 1rem !important;
+        }
+
+        .main-grid {
+            gap: 2rem !important;
+        }
+
+        h2 {
+            font-size: 1.5rem !important;
+        }
+
+        .sidebar-container {
+            max-width: 100% !important;
+            padding: 1.5rem !important;
+        }
+
+        .unit-card,
+        .amenity-item,
+        .gallery-item {
+            animation: none !important;
+            opacity: 1 !important;
+        }
+
+        .unit-card:hover,
+        .amenity-item:hover,
+        .gallery-item:hover {
+            transform: none !important;
+        }
+    }
+
+    /* Mobile Portrait (max-width: 575px) */
+    @media (max-width: 575px) {
+        section:first-of-type > div > a {
+            font-size: 0.875rem !important;
+            padding: 0.5rem 0.875rem !important;
+        }
+
+        section:first-of-type > div > div > div:first-child {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.8rem !important;
+        }
+
+        section:first-of-type > div > div > div:first-child img {
+            height: 1.5rem !important;
+        }
+
+        section:first-of-type > div > div > h1 {
+            font-size: 1.75rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        section:first-of-type > div > div > div:nth-child(3) {
+            font-size: 0.875rem !important;
+            gap: 0.875rem !important;
+        }
+
+        section:first-of-type > div > div > div:nth-child(3) i {
+            font-size: 1rem !important;
+        }
+
+        h2 {
+            font-size: 1.35rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        h3 {
+            font-size: 1.125rem !important;
+        }
+
+        p {
+            font-size: 0.95rem !important;
+            line-height: 1.7 !important;
+        }
+
+        .unit-card,
+        .amenity-item {
+            padding: 1.125rem !important;
+        }
+
+        .gallery-item img {
+            height: 180px !important;
+        }
+
+        .sidebar-container {
+            padding: 1.25rem !important;
+            border-radius: 16px !important;
+        }
+
+        .sidebar-container a,
+        .sidebar-container button {
+            padding: 0.875rem !important;
+            font-size: 0.95rem !important;
+        }
+
+        .sidebar-container input,
+        .sidebar-container textarea {
+            padding: 0.75rem !important;
+            font-size: 0.95rem !important;
+        }
+
+        iframe {
+            height: 300px !important;
+        }
+    }
+
+    /* Extra Small Mobile (max-width: 375px) */
+    @media (max-width: 375px) {
+        section:first-of-type > div {
+            padding: 2.5rem 0.875rem 1.5rem !important;
+        }
+
+        section:first-of-type > div > div > h1 {
+            font-size: 1.5rem !important;
+        }
+
+        section:first-of-type > div > div > div:nth-child(3) {
+            font-size: 0.813rem !important;
+        }
+
+        h2 {
+            font-size: 1.25rem !important;
+        }
+
+        .unit-card,
+        .amenity-item {
+            padding: 1rem !important;
+        }
+
+        .gallery-item img {
+            height: 160px !important;
+        }
+
+        .sidebar-container {
+            padding: 1rem !important;
+        }
+
+        .sidebar-container a,
+        .sidebar-container button {
+            padding: 0.75rem !important;
+            font-size: 0.875rem !important;
+        }
+
+        .sidebar-container input,
+        .sidebar-container textarea {
+            padding: 0.625rem !important;
+            font-size: 0.875rem !important;
+        }
+    }
 </style>
 
 <!-- HERO SECTION -->
@@ -146,11 +383,11 @@
     </div>
 </section>
 
-<!-- CONTENT SECTION (NO SEPARATION) -->
+<!-- CONTENT SECTION -->
 <section style="padding: 4rem 2rem; background: #f8fafc;">
     <div style="max-width: 1400px; margin: 0 auto;">
 
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem;">
+        <div class="main-grid">
 
             <!-- LEFT COLUMN -->
             <div style="display: flex; flex-direction: column; gap: 3rem;">
@@ -235,11 +472,9 @@
                 {% endif %}
             </div>
 
-            <!-- RIGHT SIDEBAR -->
+            <!-- RIGHT SIDEBAR (CONTACT FORM) -->
             <div>
-                <div style="position: sticky; top: 2rem; background: #ffffff;
-                            border: 1px solid #e2e8f0; border-radius: 20px;
-                            padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
+                <div class="sidebar-container">
 
                     <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Contact Us</h3>
                     <p style="font-size: .95rem; color: #64748b; margin-bottom: 1.5rem;">
@@ -274,24 +509,24 @@
                         {% csrf_token %}
 
                         <input type="text" name="name" placeholder="Name" required
-                               style="padding:0.875rem; border:1px solid #e2e8f0; border-radius:10px; transition: border-color 0.3s ease;"
+                               style="padding:0.875rem; border:1px solid #e2e8f0; border-radius:10px; transition: border-color 0.3s ease; width: 100%; box-sizing: border-box;"
                                onfocus="this.style.borderColor='#c7b04c'"
                                onblur="this.style.borderColor='#e2e8f0'">
                         <input type="email" name="email" placeholder="Email" required
-                               style="padding:0.875rem; border:1px solid #e2e8f0; border-radius:10px; transition: border-color 0.3s ease;"
+                               style="padding:0.875rem; border:1px solid #e2e8f0; border-radius:10px; transition: border-color 0.3s ease; width: 100%; box-sizing: border-box;"
                                onfocus="this.style.borderColor='#c7b04c'"
                                onblur="this.style.borderColor='#e2e8f0'">
                         <input type="tel" name="phone" placeholder="Phone" required
-                               style="padding:0.875rem; border:1px solid #e2e8f0; border-radius:10px; transition: border-color 0.3s ease;"
+                               style="padding:0.875rem; border:1px solid #e2e8f0; border-radius:10px; transition: border-color 0.3s ease; width: 100%; box-sizing: border-box;"
                                onfocus="this.style.borderColor='#c7b04c'"
                                onblur="this.style.borderColor='#e2e8f0'">
                         <textarea name="message" rows="4" placeholder="Message..."
-                                  style="padding:0.875rem; border:1px solid #e2e8f0; border-radius:10px; transition: border-color 0.3s ease;"
+                                  style="padding:0.875rem; border:1px solid #e2e8f0; border-radius:10px; transition: border-color 0.3s ease; width: 100%; box-sizing: border-box; resize: vertical;"
                                   onfocus="this.style.borderColor='#c7b04c'"
                                   onblur="this.style.borderColor='#e2e8f0'"></textarea>
 
                         <button type="submit"
-                                style="background:#1e3a5f; color:white; padding:1rem;
+                                style="background:#1e3a5f; color:white; padding:1rem; width: 100%;
                                        border:none; border-radius:12px; font-weight:600; cursor: pointer; transition: all 0.3s ease;"
                                 onmouseover="this.style.background='#152a47'; this.style.transform='translateY(-2px)'"
                                 onmouseout="this.style.background='#1e3a5f'; this.style.transform='translateY(0)'">

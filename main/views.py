@@ -9,7 +9,9 @@ import json
 
 def home(request):
     """Render the home page"""
+    offplan = Property.objects.order_by('-low_price')[:8]
     context = {
+        'offplan':offplan,
         'page_title': 'Home - Off Plan UAE',
         'meta_description': 'Discover premium off-plan properties in UAE',
     }
@@ -433,7 +435,7 @@ def properties_detail(request, property_id=None):
     # Create demo developer
     demo_developer = DemoObject(
         name="Emaar Properties",
-        logo=DemoObject(url="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Emaar_Properties_logo.svg/320px-Emaar_Properties_logo.svg.png")
+        logo=DemoObject(url="{% static 'img/emaar.png' %}")
     )
     
     # Create demo unit details

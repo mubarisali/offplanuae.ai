@@ -2,66 +2,147 @@
 # main/models.py
 from django.db import models
 from django.utils.text import slugify
+from django.utils.safestring import mark_safe
+import markdown
+import re
 
-class Property(models.Model):
-    PROPERTY_TYPES = (
-        ('villa', 'Villa'),
-        ('apartment', 'Apartment'),
-        ('penthouse', 'Penthouse'),
-        ('townhouse', 'Townhouse'),
-    )
-    
-    STATUS_CHOICES = (
-        ('new', 'New'),
-        ('hot', 'Hot'),
-        ('exclusive', 'Exclusive'),
-    )
-    
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True, blank=True)
-    description = models.TextField()
-    property_type = models.CharField(max_length=20, choices=PROPERTY_TYPES)
-    location = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=12, decimal_places=2)
-    bedrooms = models.IntegerField()
-    bathrooms = models.IntegerField()
-    area_sqft = models.IntegerField()
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
-    featured_image = models.ImageField(upload_to='properties/', blank=True)
-    is_featured = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    
-    class Meta:
-        verbose_name_plural = 'Properties'
-        ordering = ['-created_at']
-    
-    def __str__(self):
-        return self.title
-    
+
+# Create your models here.
+
+class City(models.Model):
+    name = models.CharField(max_length=255,null=True,blank=True)
+    slug = models.SlugField(blank=True, null=True)
+
     def save(self, *args, **kwargs):
         if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+class District(models.Model):
+    name = models.CharField(max_length=255,null=True,blank=True)
+    city = models.ForeignKey(City,on_delete=models.CASCADE,related_name='districts',null=True,blank=True)
+    
+    def _str_(self):
+        return self.name
+    
+class Developer(models.Model):
+    name = models.CharField(max_length=255,null=True, blank=True)
+    slug = models.SlugField(max_length=255, null=True, blank=True)
+    logo = models.URLField(null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
+    phone = models.CharField(max_length=20, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    website = models.URLField(null=True, blank=True)
+    overview = models.TextField(null=True, blank=True)
+
+    created_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    
+class PropertyType(models.Model):
+    name = models.CharField(max_length=255,null=True,blank=True)
+    
+    def __str__(self):
+        return self.name or "Unnamed PropertyType"
+    
+class PropertyStatus(models.Model):
+    name = models.CharField(max_length=255,null=True,blank=True)
+    
+    def _str_(self):
+        return self.name
+    
+class SalesStatus(models.Model):
+    name = models.CharField(max_length=155,null=True,blank=True)
+    
+    def _str_(self):
+        return self.name
+    
+class Facility(models.Model):
+    id = models.BigIntegerField(primary_key=True,blank=True)
+    name = models.CharField(max_length=255,null=True,blank=True)
+    
+    def _str_(self):
+        return self.name
+
+class Property(models.Model):
+    external_id = models.BigIntegerField(primary_key=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
+    title = models.CharField(max_length=255,null=True,blank=True)
+    description = models.TextField(null=True,blank=True)
+    cover = models.URLField(null=True,blank=True)
+    address = models.CharField(max_length=255,null=True,blank=True)
+    address_text = models.TextField(null=True,blank=True)
+    delivery_date = models.DateField(null=True,blank=True)
+    low_price = models.BigIntegerField(null=True,blank=True)
+    min_area = models.IntegerField(null=True,blank=True)
+    payment_plan = models.BooleanField(default=False)
+    post_delivery = models.BooleanField(default=False)
+    payment_minimum_down_payment = models.PositiveIntegerField(null=True,blank=True)  
+    guarantee_rental_guarantee = models.BooleanField(default=False)
+    guarantee_rental_guarantee_value = models.PositiveIntegerField(null=True,blank=True)  
+    down_payment = models.PositiveIntegerField(null=True,blank=True)  
+    created_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(null=True,blank=True)
+    city = models.ForeignKey(City,on_delete=models.CASCADE,related_name='properties',null=True)
+    district = models.ForeignKey(District,on_delete=models.CASCADE,related_name='properties',null=True)
+    developer = models.ForeignKey(Developer,on_delete=models.CASCADE,related_name='properties',null=True)
+    property_type =  models.ForeignKey(PropertyType,on_delete=models.CASCADE,related_name='properties',null=True)
+    property_status = models.ForeignKey(PropertyStatus,on_delete=models.CASCADE,related_name='properties',null=True)
+    sales_status = models.ForeignKey(SalesStatus,on_delete=models.CASCADE,related_name='properties',null=True)
+    facilities = models.ManyToManyField(Facility, related_name='properties')
+    def save(self, *args, **kwargs):
+        if not self.slug and self.title:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
 
-class PropertyImage(models.Model):
-    property = models.ForeignKey(Property, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='properties/gallery/')
-    caption = models.CharField(max_length=200, blank=True)
-    uploaded_at = models.DateTimeField(auto_now_add=True)
+class PropertyFacility(models.Model):
+    property_id = models.ForeignKey(Property,on_delete=models.CASCADE)
+    facility_id = models.ForeignKey(Facility,on_delete=models.CASCADE)
     
-    def __str__(self):
-        return f"Image for {self.property.title}"
+class PropertyImages(models.Model):
+    property = models.ForeignKey(Property,on_delete=models.CASCADE,related_name='property_images')
+    image = models.URLField()
+        
+class GroupedApartment(models.Model):
+    property = models.ForeignKey(Property, related_name='grouped_apartments', on_delete=models.CASCADE)
+    unit_type = models.CharField(max_length=255, null=True, blank=True)
+    rooms = models.CharField(max_length=255,null=True,blank=True)
+    min_price = models.CharField(max_length=255,null=True,blank=True)
+    min_area = models.PositiveIntegerField(null=True,blank=True)
+
+    def _str_(self):
+        return self.unit_type
+
+class PaymentPlan(models.Model):
+    id = models.BigIntegerField(primary_key=True,blank=True)  
+    property = models.ForeignKey(Property, related_name='payment_plans', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255,null=True,blank=True)
+    description = models.TextField(blank=True, null=True)
+
+    def _str_(self):
+        return f"{self.name} ({self.property})"
+
+
+class PaymentPlanValue(models.Model):
+    id = models.BigIntegerField(primary_key=True,blank=True)  
+    payment_plan = models.ForeignKey(PaymentPlan, related_name='values', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255,null=True,blank=True)
+    value = models.CharField(max_length=20,null=True,blank=True) 
+
+    def _str_(self):
+        return f"{self.name}: {self.value}"
 
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
-    excerpt = models.TextField(max_length=300)
-    content = models.TextField()
+    excerpt = models.TextField(max_length=300,null=True)
+    content = models.TextField(null=True)
     featured_image = models.ImageField(upload_to='blog/', blank=True)
-    author = models.CharField(max_length=100, default='Admin')
+    author = models.CharField(max_length=255, default='Admin')
     views = models.IntegerField(default=0)
     published_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

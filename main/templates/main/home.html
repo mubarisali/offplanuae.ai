@@ -25,10 +25,9 @@
         overflow: hidden;
         margin-top: 0;
         padding-bottom: 6rem;
-         padding-top: 90px;
+        padding-top: 90px;
     }
 
-    /* Background Dubai Skyline Silhouette */
     .hero-background {
         position: absolute;
         bottom: 0;
@@ -44,12 +43,8 @@
     }
 
     @keyframes slowZoom {
-        from {
-            transform: scale(1);
-        }
-        to {
-            transform: scale(1.1);
-        }
+        from { transform: scale(1); }
+        to { transform: scale(1.1); }
     }
 
     .hero-container {
@@ -60,7 +55,6 @@
         text-align: center;
     }
 
-    /* Main Heading */
     .hero-heading {
         margin-bottom: 2rem;
         animation: fadeInUp 0.8s ease-out;
@@ -73,10 +67,8 @@
         margin-bottom: 0.5rem;
     }
 
-    .heading-line-1 {
-        color: #1e3a5f;
-    }
-
+    .heading-line-1 { color: #1e3a5f; }
+    
     .heading-line-2 {
         background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
         -webkit-background-clip: text;
@@ -89,7 +81,6 @@
         font-size: clamp(2rem, 4vw, 3.5rem);
     }
 
-    /* Description */
     .hero-description {
         max-width: 900px;
         margin: 0 auto 1rem;
@@ -103,15 +94,14 @@
         margin-bottom: 0.5rem;
     }
 
-  .smart-text {
-    background: linear-gradient(90deg, #c7b04c 0%, #c7b04c 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 600;
-}
+    .smart-text {
+        background: linear-gradient(90deg, #c7b04c 0%, #c7b04c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 600;
+    }
 
-    /* Statistics Card */
     .stats-card {
         max-width: 1100px;
         margin: 3rem auto 0;
@@ -138,9 +128,7 @@
         margin-bottom: 0.75rem;
     }
 
-    .stats-title {
-        color: #1e3a5f;
-    }
+    .stats-title { color: #1e3a5f; }
 
     .stats-highlight {
         background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
@@ -156,7 +144,6 @@
         margin: 0 auto;
     }
 
-    /* Statistics Grid */
     .stats-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -196,7 +183,215 @@
         font-weight: 500;
     }
 
-    /* Floating Action Buttons */
+    /* Search & Filter Section */
+    .search-filter-container {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        max-width: 1300px;
+        margin: 0 auto 2.5rem;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: #ffffff;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        border: 1px solid #e5e7eb;
+        margin-bottom: 1.5rem;
+    }
+
+    .search-bar input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        font-size: 0.95rem;
+        outline: none;
+        color: #475569;
+        width: 100%;
+    }
+
+    .filter-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .filter-label i {
+        color: #c7b04c;
+        font-size: 1rem;
+    }
+
+    .filter-label span {
+        font-weight: 600;
+        color: #1e293b;
+        font-size: 0.95rem;
+    }
+
+    .filters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .filters-grid select {
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        border: 1px solid #e5e7eb;
+        font-size: 0.9rem;
+        color: #475569;
+        background: #ffffff;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .filter-results {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .filter-results-count {
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    .filter-results-count i {
+        color: #c7b04c;
+        margin-right: 0.3rem;
+    }
+
+    .filter-results-count span {
+        color: #1e293b;
+        font-weight: 600;
+    }
+
+    .clear-filters {
+        color: #c7b04c;
+        font-weight: 600;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+
+    /* Newsletter Section */
+    .newsletter-section {
+        background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+        border-radius: 20px;
+        padding: 60px 2rem;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.8s ease-out 0.5s backwards;
+        max-width: 1400px;
+        margin: 4rem auto;
+    }
+
+    .newsletter-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+        animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .newsletter-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .newsletter-section h2 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        margin-bottom: 15px;
+        color: white;
+        font-weight: 700;
+    }
+
+    .newsletter-section h2 .highlight {
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .newsletter-section p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 35px;
+        font-size: clamp(0.95rem, 2vw, 1.05rem);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 15px;
+        max-width: 600px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .newsletter-form input {
+        flex: 1;
+        min-width: 200px;
+        padding: 18px 25px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        font-size: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .newsletter-form input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .newsletter-form input:focus {
+        outline: none;
+        border-color: #d4a574;
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .newsletter-form button {
+        padding: 18px 40px;
+        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        white-space: nowrap;
+    }
+
+    .newsletter-form button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+    }
+
+    /* Floating Buttons */
     .floating-buttons {
         position: fixed;
         bottom: 6rem;
@@ -236,7 +431,6 @@
         font-size: 1.25rem;
     }
 
-    /* Animations */
     @keyframes fadeInUp {
         from {
             opacity: 0;
@@ -247,41 +441,239 @@
             transform: translateY(0);
         }
     }
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
 
-    /* FIX: Make language dropdown visible on mobile */
-    @media (max-width: 768px) {
+.popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
 
-        /* Allow dropdown to overflow */
-        nav, header, .navbar, .top-bar {
-            overflow: visible !important;
-        }
+.popup-modal {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
 
-        /* Fix container that clips the dropdown */
+.popup-overlay.show .popup-modal {
+    transform: scale(1);
+}
+
+.popup-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #c7b04c 0%, #d4af37 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.popup-icon i {
+    font-size: 40px;
+    color: white;
+}
+
+.popup-modal h3 {
+    font-size: 1.8rem;
+    color: #1e3a5f;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.popup-modal p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.popup-close-btn {
+    padding: 12px 40px;
+    background: linear-gradient(135deg, #c7b04c 0%, #d4af37 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.popup-close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(199, 176, 76, 0.4);
+}
+    /* ============================================
+       RESPONSIVE MEDIA QUERIES
+       ============================================ */
+
+    /* Tablet (max-width: 991px) */
+    @media (max-width: 991px) {
         .hero-section {
+            padding: 3rem 1.5rem 5rem;
+            padding-top: 100px;
+        }
+
+        .stats-card-bg {
+            padding: 2.5rem 1.5rem;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .search-filter-container {
+            padding: 1.5rem;
+        }
+
+        .newsletter-section {
+            padding: 50px 1.5rem;
+            margin: 3rem 1.5rem;
+        }
+    }
+
+    /* Mobile (max-width: 767px) */
+    @media (max-width: 767px) {
+        .hero-section {
+            padding: 2.5rem 1rem 4rem;
+            padding-top: 100px;
             overflow: visible !important;
-            padding-top: 120px !important; /* Prevent overlap */
         }
 
-        /* Ensure dropdown shows above hero background */
-        .language-selector,
-        .language-dropdown {
-            position: relative !important;
-            z-index: 9999 !important;
+        .hero-heading h1 {
+            font-size: clamp(2rem, 8vw, 3rem) !important;
         }
 
-        /* Mobile menu spacing fix */
-        .navbar-menu {
-            margin-top: 10px !important;
+        .stats-card {
+            margin: 2rem 0 0;
         }
 
-        /* Dropdown menu sizing for small screens */
-        .language-dropdown select,
-        .language-dropdown ul {
-            font-size: 1rem !important;
-            padding: 0.6rem 1rem !important;
+        .stats-card-bg {
+            padding: 2rem 1.25rem;
+            border-radius: 16px;
         }
 
-        /* Mobile: Stack buttons vertically and make circular */
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .stat-item {
+            padding: 0.75rem;
+        }
+
+        /* Search & Filter Mobile Fix */
+        .search-filter-container {
+            padding: 1.25rem;
+            margin: 0 1rem 2rem;
+            border-radius: 12px;
+        }
+
+        .search-bar {
+            padding: 0.875rem 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .search-bar i {
+            font-size: 1rem;
+        }
+
+        .search-bar input {
+            font-size: 0.875rem;
+        }
+
+        .filters-grid {
+            grid-template-columns: 1fr;
+            gap: 0.875rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .filters-grid select {
+            padding: 0.875rem;
+            font-size: 0.875rem;
+        }
+
+        .filter-results {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        /* Newsletter Mobile Fix */
+        .newsletter-section {
+            padding: 40px 1.25rem;
+            margin: 3rem 1rem;
+            border-radius: 16px;
+        }
+
+        .newsletter-section h2 {
+            font-size: 1.75rem !important;
+            margin-bottom: 12px;
+        }
+
+        .newsletter-section p {
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            padding: 0 0.5rem;
+        }
+
+        .newsletter-form {
+            flex-direction: column;
+            gap: 12px;
+            padding: 0;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            min-width: 100%;
+            padding: 14px 18px;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 14px 30px;
+            font-size: 0.875rem;
+        }
+
+        /* Floating Buttons Mobile */
         .floating-buttons {
             flex-direction: column;
             bottom: 5rem;
@@ -307,117 +699,83 @@
         }
     }
 
-    /* FIX: Absolute dropdowns ALWAYS display above hero background */
-    .hero-background {
-        z-index: 1 !important;
+    /* Extra Small Mobile (max-width: 480px) */
+    @media (max-width: 480px) {
+        .hero-section {
+            padding: 2rem 0.875rem 3.5rem;
+            padding-top: 90px;
+        }
+
+        .hero-heading {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description p {
+            font-size: 0.95rem;
+        }
+
+        .stats-card-bg {
+            padding: 1.75rem 1rem;
+        }
+
+        .stats-grid {
+            gap: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem !important;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+        }
+
+        .search-filter-container {
+            padding: 1rem;
+            margin: 0 0.875rem 1.75rem;
+        }
+
+        .search-bar {
+            padding: 0.75rem 0.875rem;
+        }
+
+        .filters-grid select {
+            padding: 0.75rem;
+            font-size: 0.813rem;
+        }
+
+        .newsletter-section {
+            padding: 30px 1rem;
+            margin: 2.5rem 0.875rem;
+        }
+
+        .newsletter-section h2 {
+            font-size: 1.5rem !important;
+        }
+
+        .newsletter-section p {
+            font-size: 0.875rem;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form input,
+        .newsletter-form button {
+            padding: 12px 16px;
+            font-size: 0.875rem;
+        }
     }
+
+    /* Fix header/nav z-index */
     header, nav, .navbar {
         z-index: 5000 !important;
     }
+
     .language-selector, .language-dropdown {
         z-index: 99999 !important;
     }
 
-     /* Newsletter Section */
-    .newsletter-section {
-        background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
-        border-radius: 20px;
-        padding: 60px;
-        text-align: center;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        position: relative;
-        overflow: hidden;
-        animation: fadeInUp 0.8s ease-out 0.5s backwards;
-        max-width: 1400px;
-        margin: 4rem auto;
-    }
-
-    .newsletter-section::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
-        animation: rotate 20s linear infinite;
-    }
-
-    @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-
-    .newsletter-content {
-        position: relative;
-        z-index: 1;
-    }
-
-    .newsletter-section h2 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-        color: white;
-        font-weight: 700;
-    }
-
-    .newsletter-section h2 .highlight {
-        background: linear-gradient(135deg, #c7b04c 0%, #c7b04c 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .newsletter-section p {
-        color: rgba(255, 255, 255, 0.8);
-        margin-bottom: 35px;
-        font-size: 1.05rem;
-    }
-
-    .newsletter-form {
-        display: flex;
-        gap: 15px;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .newsletter-form input {
-        flex: 1;
-        padding: 18px 25px;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        font-size: 1rem;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        transition: all 0.3s ease;
-    }
-
-    .newsletter-form input::placeholder {
-        color: rgba(255, 255, 255, 0.6);
-    }
-
-    .newsletter-form input:focus {
-        outline: none;
-        border-color: #d4a574;
-        background: rgba(255, 255, 255, 0.15);
-    }
-
-    .newsletter-form button {
-        padding: 18px 40px;
-        background: linear-gradient(135deg,  #c7b04c 0%, #c7b04c 100%);
-        color: white;
-        border: none;
-        border-radius: 12px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
-    }
-
-    .newsletter-form button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+    nav, header, .navbar, .top-bar {
+        overflow: visible !important;
     }
 .partners-wrapper {
         background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
@@ -543,112 +901,199 @@
     .partner-card.highlighted .partner-name {
         color: #c7b04c;
     }
+    /* ============================================
+       ADDITIONAL RESPONSIVE FIXES FOR ENTIRE PAGE
+       ============================================ */
 
-    .nav-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: white;
-        border: 2px solid #c7b04c;
-        color: #c7b04c;
-        font-size: 28px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        z-index: 10;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-btn:hover {
-        background: #c7b04c;
-        color: white;
-        transform: translateY(-50%) scale(1.1);
-        box-shadow: 0 12px 32px rgba(199, 176, 76, 0.3);
-    }
-
-    .nav-btn:active {
-        transform: translateY(-50%) scale(0.95);
-    }
-
-    .nav-btn.prev {
-        left: 0;
-    }
-
-    .nav-btn.next {
-        right: 0;
-    }
-
-    .carousel-indicators {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 3rem;
-    }
-
-    .indicator-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #e2e8f0;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .indicator-dot.active {
-        background: #c7b04c;
-        width: 32px;
-        border-radius: 6px;
-    }
-
-    .indicator-dot:hover {
-        background: #cbd5e1;
-    }
-
-    .indicator-dot.active:hover {
-        background: #b8a044;
-    }
-
-    @media (max-width: 968px) {
-        .partner-card {
-            flex: 0 0 calc(50% - 12px);
-            min-width: calc(50% - 12px);
-        }
-
-        .carousel-track {
-            padding: 0 60px;
-        }
-    }
-
-    @media (max-width: 640px) {
-        .partner-card {
-            flex: 0 0 100%;
-            min-width: 100%;
-            padding: 2rem 1.5rem;
-        }
-
-        .carousel-track {
-            padding: 0 50px;
-            gap: 16px;
-        }
-
-        .nav-btn {
-            width: 48px;
-            height: 48px;
-            font-size: 24px;
-        }
-
-        .partner-logo-wrapper {
-            width: 120px;
-            height: 120px;
+    /* Tablet Responsive (max-width: 991px) */
+    @media (max-width: 991px) {
+        .exclusive-section {
+            padding: 4rem 1.5rem !important;
         }
 
         .partners-wrapper {
-            padding: 4rem 1rem;
+            padding: 4rem 1.5rem !important;
+        }
+
+        .newsletter-section {
+            margin: 3rem 1.5rem !important;
+        }
+    }
+
+    /* Mobile Responsive (max-width: 767px) */
+    @media (max-width: 767px) {
+        /* Exclusive Properties Section Mobile */
+        .exclusive-section {
+            padding: 3rem 1rem 4rem !important;
+        }
+
+        .exclusive-section > div:first-child {
+            padding: 0.5rem 1rem !important;
+            font-size: 0.85rem !important;
+            margin-bottom: 0.875rem !important;
+        }
+
+        .exclusive-section > h2 {
+            font-size: 1.75rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .exclusive-section > p {
+            font-size: 0.95rem !important;
+            padding: 0 1rem !important;
+            margin: 0 auto 2rem !important;
+        }
+
+        /* Property Cards Mobile */
+        .exclusive-section div[style*="display:grid"] {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+            padding: 0 !important;
+        }
+
+        /* Partners Section Mobile */
+        .partners-wrapper {
+            padding: 3rem 1rem !important;
+        }
+
+        .partners-header {
+            margin-bottom: 3rem !important;
+        }
+
+        .partners-badge {
+            padding: 0.35rem 0.875rem !important;
+            font-size: 0.8rem !important;
+            margin-bottom: 0.875rem !important;
+        }
+
+        .partners-header h2 {
+            font-size: 1.75rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .partners-subtitle {
+            font-size: 0.95rem !important;
+            padding: 0 1rem !important;
+        }
+
+        .carousel-wrapper {
+            padding: 30px 0 !important;
+        }
+
+        .carousel-track {
+            padding: 0 50px !important;
+            gap: 16px !important;
+        }
+
+        .partner-card {
+            flex: 0 0 100% !important;
+            min-width: 100% !important;
+            padding: 2rem 1.5rem !important;
+        }
+
+        .partner-logo-wrapper {
+            width: 120px !important;
+            height: 120px !important;
+        }
+
+        .partner-name {
+            font-size: 1.125rem !important;
+        }
+
+        .nav-btn {
+            width: 48px !important;
+            height: 48px !important;
+            font-size: 24px !important;
+        }
+
+        .carousel-indicators {
+            margin-top: 2rem !important;
+        }
+
+        .indicator-dot {
+            width: 10px !important;
+            height: 10px !important;
+        }
+
+        .indicator-dot.active {
+            width: 28px !important;
+        }
+    }
+
+    /* Extra Small Mobile (max-width: 480px) */
+    @media (max-width: 480px) {
+        .exclusive-section {
+            padding: 2.5rem 0.875rem 3.5rem !important;
+        }
+
+        .exclusive-section > h2 {
+            font-size: 1.5rem !important;
+        }
+
+        .exclusive-section > p {
+            font-size: 0.875rem !important;
+        }
+
+        .exclusive-section div[style*="display:grid"] {
+            gap: 1.25rem !important;
+        }
+
+        /* Property Card Adjustments */
+        .exclusive-section div[style*="background:white"] {
+            border-radius: 14px !important;
+        }
+
+        .exclusive-section div[style*="background:white"] > div:last-child {
+            padding: 1.25rem !important;
+        }
+
+        .exclusive-section h3 {
+            font-size: 1.125rem !important;
+        }
+
+        .exclusive-section div[style*="font-size:1.6rem"] {
+            font-size: 1.4rem !important;
+        }
+
+        .exclusive-section a[style*="display:block"] {
+            padding: 0.75rem !important;
+            font-size: 0.875rem !important;
+        }
+
+        /* Partners Mobile Extra Small */
+        .partners-wrapper {
+            padding: 2.5rem 0.875rem !important;
+        }
+
+        .partners-header h2 {
+            font-size: 1.5rem !important;
+        }
+
+        .partners-subtitle {
+            font-size: 0.875rem !important;
+        }
+
+        .carousel-track {
+            padding: 0 45px !important;
+        }
+
+        .partner-card {
+            padding: 1.75rem 1.25rem !important;
+        }
+
+        .partner-logo-wrapper {
+            width: 110px !important;
+            height: 110px !important;
+        }
+
+        .partner-name {
+            font-size: 1rem !important;
+        }
+
+        .nav-btn {
+            width: 44px !important;
+            height: 44px !important;
+            font-size: 22px !important;
         }
     }
 </style>
@@ -657,7 +1102,6 @@
     <div class="hero-background"></div>
     
     <div class="hero-container">
-        <!-- Main Heading -->
         <div class="hero-heading">
             <h1>
                 <div class="heading-line-1">Discover Luxury</div>
@@ -666,7 +1110,6 @@
             </h1>
         </div>
 
-        <!-- Description -->
         <div class="hero-description">
             <p>
                 Leverage cutting-edge artificial intelligence to find premium investment opportunities in Dubai, Abu Dhabi, and beyond.
@@ -674,10 +1117,8 @@
             <p class="smart-text">Smart investments start here.</p>
         </div>
 
-        <!-- Statistics Card -->
         <div class="stats-card">
             <div class="stats-card-bg">
-                <!-- Stats Header -->
                 <div class="stats-header">
                     <h2>
                         <span class="stats-title">Dubai's </span>
@@ -688,7 +1129,6 @@
                     </p>
                 </div>
 
-                <!-- Statistics Grid -->
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-number gold">
@@ -723,7 +1163,6 @@
     </div>
 </section>
 
-<!-- Exclusive Properties Section -->
 <section class="exclusive-section" style="padding: 6rem 2rem; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); text-align:center;">
 
     <!-- Badge -->
@@ -739,55 +1178,54 @@
         Discover premium off-plan properties from trusted developers across the UAE
     </p>
 
-   <!-- Exclusive Properties Section -->
+<!-- Exclusive Properties Section -->
 <section class="exclusive-section" style="padding: 4rem 2rem 6rem; background: #f8fafb;">
 
     <!-- Search + Filters Container -->
-    <div style="background:#ffffff; border-radius:16px; padding:2rem 2rem 1.5rem; box-shadow:0 4px 20px rgba(0,0,0,0.06); max-width:1300px; margin:0 auto 2.5rem;">
-
+    <div class="search-filter-container">
         <!-- Search bar -->
-        <div style="display:flex; align-items:center; gap:1rem; background:#ffffff; padding:1rem 1.5rem; border-radius:10px; border:1px solid #e5e7eb; margin-bottom:1.5rem;">
+        <div class="search-bar">
             <i class="fas fa-search" style="color:#c7b04c; font-size:1.1rem;"></i>
-            <input type="text" placeholder="Search properties by name, location, or developer..." style="flex:1; border:none; background:transparent; font-size:0.95rem; outline:none; color:#475569;">
+            <input type="text" placeholder="Search properties by name, location, or developer...">
         </div>
 
         <!-- Refine Your Search Label -->
-        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-            <i class="fas fa-sliders-h" style="color:#c7b04c; font-size:1rem;"></i>
-            <span style="font-weight:600; color:#1e293b; font-size:0.95rem;">Refine Your Search</span>
+        <div class="filter-label">
+            <i class="fas fa-sliders-h"></i>
+            <span>Refine Your Search</span>
         </div>
 
         <!-- Filters Grid -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-bottom:1.5rem;">
-            <select style="padding:0.75rem 1rem; border-radius:10px; border:1px solid #e5e7eb; font-size:0.9rem; color:#475569; background:#ffffff; cursor:pointer;">
+        <div class="filters-grid">
+            <select>
                 <option>All Developers</option>
                 <option>Nakheel</option>
                 <option>Damac Properties</option>
                 <option>Aldar Properties</option>
                 <option>Sobha Realty</option>
             </select>
-            <select style="padding:0.75rem 1rem; border-radius:10px; border:1px solid #e5e7eb; font-size:0.9rem; color:#475569; background:#ffffff; cursor:pointer;">
-                <option> All Types</option>
+            <select>
+                <option>All Types</option>
                 <option>Apartment</option>
                 <option>Townhouse</option>
                 <option>Penthouse</option>
-                 <option>Villas</option>
+                <option>Villas</option>
             </select>
-            <select style="padding:0.75rem 1rem; border-radius:10px; border:1px solid #e5e7eb; font-size:0.9rem; color:#475569; background:#ffffff; cursor:pointer;">
+            <select>
                 <option>All Prices</option>
                 <option>Under 2M AED</option>
                 <option>2M - 5M AED</option>
                 <option>5M - 10M AED</option>
                 <option>Above 10M AED</option>
             </select>
-            <select style="padding:0.75rem 1rem; border-radius:10px; border:1px solid #e5e7eb; font-size:0.9rem; color:#475569; background:#ffffff; cursor:pointer;">
+            <select>
                 <option>All Locations</option>
                 <option>Palm Jumeirah</option>
                 <option>Downtown Dubai</option>
                 <option>Yas Island</option>
                 <option>Mohammed Bin Rashid City</option>
             </select>
-            <select style="padding:0.75rem 1rem; border-radius:10px; border:1px solid #e5e7eb; font-size:0.9rem; color:#475569; background:#ffffff; cursor:pointer;">
+            <select>
                 <option>All Bedrooms</option>
                 <option>Studio</option>
                 <option>1 Bedroom</option>
@@ -798,12 +1236,12 @@
         </div>
 
         <!-- Result Count + Clear Filters -->
-        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.9rem;">
-            <div style="color:#64748b; font-weight:500;">
-                <i class="fas fa-home" style="color:#c7b04c; margin-right:0.3rem;"></i>
-                <span style="color:#1e293b; font-weight:600;">4 Properties Found</span> of 8 total
+        <div class="filter-results">
+            <div class="filter-results-count">
+                <i class="fas fa-home"></i>
+                <span>4 Properties Found</span> of 8 total
             </div>
-            <a href="#" style="color:#c7b04c; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:0.3rem;">
+            <a href="#" class="clear-filters">
                 Clear Filters <i class="fas fa-times" style="font-size:0.8rem;"></i>
             </a>
         </div>
@@ -811,288 +1249,76 @@
 
     <!-- Properties Grid -->
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; max-width:1300px; margin:0 auto;">
+        {% for prop in offplan %}
 
         <!-- Property Card 1 - Palm Residences -->
         <div style="background:white; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; transition:transform 0.3s ease, box-shadow 0.3s ease; position:relative;">
             <div style="position:relative; overflow:hidden;">
-                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=500&h=350&fit=crop" style="width:100%; height:240px; object-fit:cover; transition:transform 0.3s ease;">
+                <img src="{{ prop.cover }}" style="width:100%; height:240px; object-fit:cover; transition:transform 0.3s ease;">
                 <div style="position:absolute; top:12px; left:12px; background:#1e3a5f; color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.75rem; font-weight:600; display:flex; align-items:center; gap:0.3rem;">
                     <i class="fas fa-bed" style="font-size:0.8rem;"></i> 4 BR
                 </div>
                 <div style="position:absolute; top:12px; right:12px; background:#c7b04c; color:white; padding:0.4rem 0.9rem; border-radius:8px; font-size:0.75rem; font-weight:700;">
-                    VILLA
+                     {{ prop.property_type|upper }}
                 </div>
             </div>
             <div style="padding:1.5rem;">
                 <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.8rem; color:#64748b; font-size:0.85rem;">
                     <i class="fas fa-map-marker-alt" style="color:#c7b04c;"></i>
-                    <span>Palm Jumeirah</span>
+                    <span>{{ prop.city.name }}</span>
                 </div>
-                <h3 style="font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Palm Residences</h3>
+                <h3 style="font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">{{ prop.title }}</h3>
                 
                 <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-                    <img src="https://via.placeholder.com/32x32" style="width:24px; height:24px; border-radius:4px;">
+                    <img src="{{ prop.developer.logo }}" style="width:60px; height:60px; border-radius:4px;">
                     <div>
                         <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em;">Developer</div>
-                        <div style="font-size:0.9rem; color:#475569; font-weight:600;">Nakheel</div>
+                        <div style="font-size:0.9rem; color:#475569; font-weight:600;">{{ prop.developer.name }}</div>
                     </div>
                 </div>
 
                 <div style="margin-bottom:1.2rem;">
                     <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.2rem;">Starting Price</div>
-                    <div style="font-size:1.6rem; font-weight:700; color:#c7b04c;">AED 5,800,000</div>
+                    <div style="font-size:1.6rem; font-weight:700; color:#c7b04c;">{{ prop.low_price }}</div>
                 </div>
 
-                <a href="{% url 'main:properties_detail' %}" style="display:block; text-align:center; background:#1e3a5f; color:white; padding:0.85rem; border-radius:10px; font-size:0.9rem; font-weight:600; text-decoration:none; transition:background 0.3s ease;">
+                <a href="#" style="display:block; text-align:center; background:#1e3a5f; color:white; padding:0.85rem; border-radius:10px; font-size:0.9rem; font-weight:600; text-decoration:none; transition:background 0.3s ease;">
                     View Details <i class="fas fa-eye" style="margin-left:0.4rem;"></i>
                 </a>
             </div>
         </div>
-
-        <!-- Property Card 2 - Downtown Villas -->
-        <div style="background:white; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; transition:transform 0.3s ease, box-shadow 0.3s ease; position:relative;">
-            <div style="position:relative; overflow:hidden;">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&h=350&fit=crop" style="width:100%; height:240px; object-fit:cover; transition:transform 0.3s ease;">
-                <div style="position:absolute; top:12px; left:12px; background:#1e3a5f; color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.75rem; font-weight:600; display:flex; align-items:center; gap:0.3rem;">
-                    <i class="fas fa-bed" style="font-size:0.8rem;"></i> 3 BR
-                </div>
-                <div style="position:absolute; top:12px; right:12px; background:#c7b04c; color:white; padding:0.4rem 0.9rem; border-radius:8px; font-size:0.75rem; font-weight:700;">
-                    VILLA
-                </div>
-            </div>
-            <div style="padding:1.5rem;">
-                <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.8rem; color:#64748b; font-size:0.85rem;">
-                    <i class="fas fa-map-marker-alt" style="color:#c7b04c;"></i>
-                    <span>Downtown Dubai</span>
-                </div>
-                <h3 style="font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Downtown Villas</h3>
-                
-                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-                    <img src="https://via.placeholder.com/32x32" style="width:24px; height:24px; border-radius:4px;">
-                    <div>
-                        <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em;">Developer</div>
-                        <div style="font-size:0.9rem; color:#475569; font-weight:600;">Damac Properties</div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom:1.2rem;">
-                    <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.2rem;">Starting Price</div>
-                    <div style="font-size:1.6rem; font-weight:700; color:#c7b04c;">AED 4,200,000</div>
-                </div>
-
-                <a href="{% url 'main:properties_detail' %}" style="display:block; text-align:center; background:#1e3a5f; color:white; padding:0.85rem; border-radius:10px; font-size:0.9rem; font-weight:600; text-decoration:none; transition:background 0.3s ease;">
-                    View Details <i class="fas fa-eye" style="margin-left:0.4rem;"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Property Card 3 - Yas Island Estate -->
-        <div style="background:white; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; transition:transform 0.3s ease, box-shadow 0.3s ease; position:relative;">
-            <div style="position:relative; overflow:hidden;">
-                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&h=350&fit=crop" style="width:100%; height:240px; object-fit:cover; transition:transform 0.3s ease;">
-                <div style="position:absolute; top:12px; left:12px; background:#1e3a5f; color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.75rem; font-weight:600; display:flex; align-items:center; gap:0.3rem;">
-                    <i class="fas fa-bed" style="font-size:0.8rem;"></i> 4 BR
-                </div>
-                <div style="position:absolute; top:12px; right:12px; background:#c7b04c; color:white; padding:0.4rem 0.9rem; border-radius:8px; font-size:0.75rem; font-weight:700;">
-                    VILLA
-                </div>
-            </div>
-            <div style="padding:1.5rem;">
-                <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.8rem; color:#64748b; font-size:0.85rem;">
-                    <i class="fas fa-map-marker-alt" style="color:#c7b04c;"></i>
-                    <span>Yas Island</span>
-                </div>
-                <h3 style="font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Yas Island Estate</h3>
-                
-                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-                 <img src="{% static 'img/hero.avif' %}" style="width:30px; height:30px; border-radius:4px;" alt="Hero Image">
-
-                    <div>
-                        <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em;">Developer</div>
-                        <div style="font-size:0.9rem; color:#475569; font-weight:600;">Aldar Properties</div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom:1.2rem;">
-                    <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.2rem;">Starting Price</div>
-                    <div style="font-size:1.6rem; font-weight:700; color:#c7b04c;">AED 3,800,000</div>
-                </div>
-
-                <a href="{% url 'main:properties_detail' %}" style="display:block; text-align:center; background:#1e3a5f; color:white; padding:0.85rem; border-radius:10px; font-size:0.9rem; font-weight:600; text-decoration:none; transition:background 0.3s ease;">
-                    View Details <i class="fas fa-eye" style="margin-left:0.4rem;"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Property Card 4 - Hartland Greens -->
-        <div style="background:white; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; transition:transform 0.3s ease, box-shadow 0.3s ease; position:relative;">
-            <div style="position:relative; overflow:hidden;">
-                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&h=350&fit=crop" style="width:100%; height:240px; object-fit:cover; transition:transform 0.3s ease;">
-                <div style="position:absolute; top:12px; left:12px; background:#1e3a5f; color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.75rem; font-weight:600; display:flex; align-items:center; gap:0.3rem;">
-                    <i class="fas fa-bed" style="font-size:0.8rem;"></i> 5 BR
-                </div>
-                <div style="position:absolute; top:12px; right:12px; background:#c7b04c; color:white; padding:0.4rem 0.9rem; border-radius:8px; font-size:0.75rem; font-weight:700;">
-                    VILLA
-                </div>
-            </div>
-            <div style="padding:1.5rem;">
-                <div style="display:flex; align-items:center; gap:0.4rem; margin-bottom:0.8rem; color:#64748b; font-size:0.85rem;">
-                    <i class="fas fa-map-marker-alt" style="color:#c7b04c;"></i>
-                    <span>Mohammed Bin Rashid City</span>
-                </div>
-                <h3 style="font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Hartland Greens</h3>
-                
-                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-                    <img src="https://via.placeholder.com/32x32" style="width:24px; height:24px; border-radius:4px;">
-                    <div>
-                        <div style="font-size:0.7rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em;">Developer</div>
-                        <div style="font-size:0.9rem; color:#475569; font-weight:600;">Sobha Realty</div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom:1.2rem;">
-                    <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.2rem;">Starting Price</div>
-                    <div style="font-size:1.6rem; font-weight:700; color:#c7b04c;">AED 6,500,000</div>
-                </div>
-
-                <a href="{% url 'main:properties_detail' %}" style="display:block; text-align:center; background:#1e3a5f; color:white; padding:0.85rem; border-radius:10px; font-size:0.9rem; font-weight:600; text-decoration:none; transition:background 0.3s ease;">
-                    View Details <i class="fas fa-eye" style="margin-left:0.4rem;"></i>
-                </a>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-</section>
-
-<section class="partners-wrapper">
-    <div class="partners-container">
-        <!-- Header -->
-        <div class="partners-header">
-            <div class="partners-badge">TRUSTED PARTNERS</div>
-            <h2>
-                Our <span class="partners-highlight">Developer Partners</span>
-            </h2>
-            <p class="partners-subtitle">
-                We collaborate with the most prestigious developers in the UAE to bring you exceptional properties
-            </p>
-        </div>
-
-        <!-- Carousel -->
-        <div class="carousel-wrapper">
-            <button class="nav-btn prev" onclick="moveCarousel(-1)" aria-label="Previous">
-                &#8249;
-            </button>
-
-            <div class="carousel-track" id="carouselTrack">
-                <!-- Partner Card 1 - Emaar -->
-                <div class="partner-card">
-                    <div class="partner-logo-wrapper">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Emaar_Properties_Logo.svg/320px-Emaar_Properties_Logo.svg.png" 
-                             alt="Emaar Properties" class="partner-logo">
-                    </div>
-                    <div class="partner-name">Emaar Properties</div>
-                </div>
-
-                <!-- Partner Card 2 - Dubai Properties (Highlighted by default) -->
-                <div class="partner-card highlighted">
-                    <div class="partner-logo-wrapper">
-                        <img src="https://dubaiproperties.ae/themes/custom/dp/logo.svg" 
-                             alt="Dubai Properties" class="partner-logo">
-                    </div>
-                    <div class="partner-name">Dubai Properties</div>
-                </div>
-
-                <!-- Partner Card 3 - Nakheel -->
-                <div class="partner-card">
-                    <div class="partner-logo-wrapper">
-                        <img src="https://www.nakheel.com/wp-content/uploads/2023/09/nakheel-logo.svg" 
-                             alt="Nakheel" class="partner-logo">
-                    </div>
-                    <div class="partner-name">Nakheel</div>
-                </div>
-
-                <!-- Partner Card 4 - Damac -->
-                <div class="partner-card">
-                    <div class="partner-logo-wrapper">
-                        <img src="https://damacproperties.com/wp-content/uploads/2023/03/damac-logo.svg" 
-                             alt="Damac Properties" class="partner-logo">
-                    </div>
-                    <div class="partner-name">Damac Properties</div>
-                </div>
-
-                <!-- Partner Card 5 - Aldar -->
-                <div class="partner-card">
-                    <div class="partner-logo-wrapper">
-                        <img src="https://www.aldar.com/themes/custom/aldar/logo.svg" 
-                             alt="Aldar Properties" class="partner-logo">
-                    </div>
-                    <div class="partner-name">Aldar Properties</div>
-                </div>
-
-                <!-- Partner Card 6 - Sobha -->
-                <div class="partner-card">
-                    <div class="partner-logo-wrapper">
-                        <img src="https://www.sobharealty.com/themes/custom/sobha/logo.svg" 
-                             alt="Sobha Realty" class="partner-logo">
-                    </div>
-                    <div class="partner-name">Sobha Realty</div>
-                </div>
-
-                <!-- Partner Card 7 - Meraas -->
-                <div class="partner-card">
-                    <div class="partner-logo-wrapper">
-                        <img src="https://www.meraas.com/themes/custom/meraas/logo.svg" 
-                             alt="Meraas" class="partner-logo">
-                    </div>
-                    <div class="partner-name">Meraas</div>
-                </div>
-
-                <!-- Partner Card 8 - Select Group -->
-                <div class="partner-card">
-                    <div class="partner-logo-wrapper">
-                        <img src="https://www.selectgroup.com/themes/custom/select/logo.svg" 
-                             alt="Select Group" class="partner-logo">
-                    </div>
-                    <div class="partner-name">Select Group</div>
-                </div>
-
-                <!-- Partner Card 9 - Azizi -->
-                <div class="partner-card">
-                    <div class="partner-logo-wrapper">
-                        <img src="https://www.azizidevelopments.com/themes/custom/azizi/logo.svg" 
-                             alt="Azizi Developments" class="partner-logo">
-                    </div>
-                    <div class="partner-name">Azizi Developments</div>
-                </div>
-            </div>
-
-            <button class="nav-btn next" onclick="moveCarousel(1)" aria-label="Next">
-                &#8250;
-            </button>
-        </div>
-
-        <!-- Indicators -->
-        <div class="carousel-indicators" id="carouselIndicators"></div>
+        {% endfor %}
     </div>
 </section>
-
 
 <!-- Newsletter -->
-        <div class="newsletter-section">
-            <div class="newsletter-content">
-                <h2>Stay <span class="highlight">Updated</span></h2>
-                <p>Get the latest off-plan property insights and investment opportunities delivered to your inbox</p>
-                <form class="newsletter-form" onsubmit="alert('Newsletter signup coming soon!'); return false;">
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-        </div>
+<div class="newsletter-section">
+    <div class="newsletter-content">
+        <h2>Stay <span class="highlight">Updated</span></h2>
+        <p>Get the latest off-plan property insights and investment opportunities delivered to your inbox</p>
+        <form class="newsletter-form" id="newsletterForm">
+            <input type="email" id="emailInput" name="email" placeholder="Enter your email address" required>
+            <button type="submit" id="submitBtn">
+                <span class="btn-text">Subscribe</span>
+                <span class="btn-loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Subscribing...
+                </span>
+            </button>
+        </form>
+    </div>
+</div>
 
-        
+<!-- Success Popup Modal -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-modal">
+        <div class="popup-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Successfully Subscribed!</h3>
+        <p>Thank you for subscribing to our newsletter. You'll receive the latest off-plan property insights and investment opportunities in your inbox.</p>
+        <button class="popup-close-btn" onclick="closePopup()">Got it!</button>
+    </div>
+</div>
 
 <!-- Floating Action Buttons -->
 <div class="floating-buttons">
@@ -1105,12 +1331,11 @@
         <span>WhatsApp</span>
     </a>
 </div>
-
 <script>
     // Counter Animation
     document.addEventListener('DOMContentLoaded', function() {
         const counters = document.querySelectorAll('.counter');
-        const speed = 2500; // Animation duration in ms
+        const speed = 2500;
 
         const observerOptions = {
             threshold: 0.5,
@@ -1144,108 +1369,386 @@
         counters.forEach(counter => observer.observe(counter));
     });
 
-     (function() {
-        let currentIndex = 0;
-        const track = document.getElementById('carouselTrack');
-        const cards = track.querySelectorAll('.partner-card');
-        const totalCards = cards.length;
-        const indicatorsContainer = document.getElementById('carouselIndicators');
+    // Property Filter System
+    (function() {
+        const searchInput = document.querySelector('.search-bar input');
+        const filterSelects = document.querySelectorAll('.filters-grid select');
+        const clearFiltersBtn = document.querySelector('.clear-filters');
+        const propertyCards = document.querySelectorAll('.exclusive-section > div:last-child > div');
+        const resultsCount = document.querySelector('.filter-results-count span');
+        const totalCount = document.querySelector('.filter-results-count');
         
-        function getCardsPerView() {
-            if (window.innerWidth <= 640) return 1;
-            if (window.innerWidth <= 968) return 2;
-            return 3;
-        }
-
-        let cardsPerView = getCardsPerView();
-        let maxIndex = Math.max(0, totalCards - cardsPerView);
-
-        function createIndicators() {
-            indicatorsContainer.innerHTML = '';
-            for (let i = 0; i <= maxIndex; i++) {
-                const dot = document.createElement('div');
-                dot.className = `indicator-dot ${i === currentIndex ? 'active' : ''}`;
-                dot.onclick = () => goToSlide(i);
-                indicatorsContainer.appendChild(dot);
-            }
-        }
-
-        function updateCarousel() {
-            const cardWidth = cards[0].offsetWidth;
-            const gap = window.innerWidth <= 640 ? 16 : 24;
-            const offset = currentIndex * (cardWidth + gap);
-            track.style.transform = `translateX(-${offset}px)`;
-            
-            // Update indicators
-            const dots = indicatorsContainer.querySelectorAll('.indicator-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-
-            // Update highlighted card (middle card of current view)
-            cards.forEach((card, index) => {
-                const isHighlighted = index === currentIndex + Math.floor(cardsPerView / 2);
-                card.classList.toggle('highlighted', isHighlighted);
-            });
-        }
-
-        window.moveCarousel = function(direction) {
-            currentIndex += direction;
-            
-            if (currentIndex < 0) {
-                currentIndex = 0;
-            } else if (currentIndex > maxIndex) {
-                currentIndex = maxIndex;
-            }
-            
-            updateCarousel();
+        let activeFilters = {
+            search: '',
+            developer: 'all',
+            type: 'all',
+            price: 'all',
+            location: 'all',
+            bedrooms: 'all'
         };
 
-        function goToSlide(index) {
-            currentIndex = index;
-            updateCarousel();
+        // Initialize - count total properties
+        const totalProperties = propertyCards.length;
+        updateResultsDisplay();
+
+        // Search functionality
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                activeFilters.search = e.target.value.toLowerCase();
+                filterProperties();
+            });
         }
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            const newCardsPerView = getCardsPerView();
-            if (newCardsPerView !== cardsPerView) {
-                cardsPerView = newCardsPerView;
-                maxIndex = Math.max(0, totalCards - cardsPerView);
-                currentIndex = Math.min(currentIndex, maxIndex);
-                createIndicators();
-                updateCarousel();
-            }
+        // Filter dropdowns functionality
+        filterSelects.forEach((select, index) => {
+            select.addEventListener('change', function(e) {
+                const filterType = ['developer', 'type', 'price', 'location', 'bedrooms'][index];
+                const value = e.target.value.toLowerCase();
+                activeFilters[filterType] = value === 'all developers' || 
+                                           value === 'all types' || 
+                                           value === 'all prices' || 
+                                           value === 'all locations' || 
+                                           value === 'all bedrooms' ? 'all' : value;
+                filterProperties();
+            });
         });
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') window.moveCarousel(-1);
-            if (e.key === 'ArrowRight') window.moveCarousel(1);
+        // Clear filters functionality
+        if (clearFiltersBtn) {
+            clearFiltersBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                clearAllFilters();
+            });
+        }
+
+        function clearAllFilters() {
+            // Reset search input
+            if (searchInput) searchInput.value = '';
+            
+            // Reset all dropdowns to first option
+            filterSelects.forEach(select => {
+                select.selectedIndex = 0;
+            });
+            
+            // Reset active filters
+            activeFilters = {
+                search: '',
+                developer: 'all',
+                type: 'all',
+                price: 'all',
+                location: 'all',
+                bedrooms: 'all'
+            };
+            
+            // Show all properties
+            filterProperties();
+        }
+
+        function extractCardData(card) {
+            // Get all text content for debugging
+            const cardText = card.textContent;
+            
+            // Title
+            const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+            
+            // Location - try multiple selectors
+            let location = '';
+            const locationIcon = card.querySelector('.fa-map-marker-alt, .fa-location-dot, i[class*="location"]');
+            if (locationIcon) {
+                location = locationIcon.nextElementSibling?.textContent.toLowerCase() || 
+                          locationIcon.parentElement?.textContent.replace(/\s+/g, ' ').toLowerCase() || '';
+            }
+            
+            // Developer - try multiple approaches
+            let developer = '';
+            // Method 1: Look for "Developer:" text
+            const developerMatch = cardText.match(/developer[:\s]+([^\n]+)/i);
+            if (developerMatch) {
+                developer = developerMatch[1].trim().toLowerCase();
+            }
+            // Method 2: Look for specific developer element
+            if (!developer) {
+                const devElements = card.querySelectorAll('div, span, p');
+                devElements.forEach(el => {
+                    const text = el.textContent;
+                    if (text.toLowerCase().includes('developer') && el.nextElementSibling) {
+                        developer = el.nextElementSibling.textContent.toLowerCase().trim();
+                    }
+                });
+            }
+            
+            // Price - try multiple selectors
+            let price = 0;
+            const priceElement = card.querySelector('[style*="font-size:1.6rem"], .price, [class*="price"]');
+            if (priceElement) {
+                const priceText = priceElement.textContent;
+                price = parseInt(priceText.replace(/[^0-9]/g, '')) || 0;
+            } else {
+                // Try to extract from any AED text
+                const priceMatch = cardText.match(/(\d[\d,]*)\s*(?:AED|aed)/);
+                if (priceMatch) {
+                    price = parseInt(priceMatch[1].replace(/,/g, '')) || 0;
+                }
+            }
+            
+            // Bedrooms - try multiple approaches
+            let bedrooms = 0;
+            const bedIcon = card.querySelector('.fa-bed, i[class*="bed"]');
+            if (bedIcon) {
+                const bedText = bedIcon.nextElementSibling?.textContent || 
+                               bedIcon.parentElement?.textContent || '';
+                const bedMatch = bedText.match(/(\d+)/);
+                if (bedMatch) {
+                    bedrooms = parseInt(bedMatch[1]);
+                } else if (bedText.toLowerCase().includes('studio')) {
+                    bedrooms = 0;
+                }
+            } else {
+                // Try to find bedroom info in text
+                const bedMatch = cardText.match(/(\d+)\s*(?:bed|bedroom)/i);
+                if (bedMatch) {
+                    bedrooms = parseInt(bedMatch[1]);
+                } else if (cardText.toLowerCase().includes('studio')) {
+                    bedrooms = 0;
+                }
+            }
+            
+            // Type tag
+            let typeTag = '';
+            const tagElement = card.querySelector('[style*="position:absolute"][style*="right"], .property-tag, [class*="tag"]');
+            if (tagElement) {
+                typeTag = tagElement.textContent.toLowerCase().trim();
+            }
+            
+            return {
+                title,
+                location,
+                developer,
+                price,
+                bedrooms,
+                typeTag,
+                cardText: cardText.toLowerCase()
+            };
+        }
+
+        function filterProperties() {
+            let visibleCount = 0;
+
+            propertyCards.forEach(card => {
+                // Extract card data with improved methods
+                const data = extractCardData(card);
+
+                // Check if card matches all active filters
+                let matches = true;
+
+                // Search filter - search across all text
+                if (activeFilters.search) {
+                    const searchTerm = activeFilters.search;
+                    if (!data.title.includes(searchTerm) && 
+                        !data.location.includes(searchTerm) && 
+                        !data.developer.includes(searchTerm) &&
+                        !data.cardText.includes(searchTerm)) {
+                        matches = false;
+                    }
+                }
+
+                // Developer filter
+                if (activeFilters.developer !== 'all') {
+                    const filterDev = activeFilters.developer;
+                    if (!data.developer.includes(filterDev) && !data.cardText.includes(filterDev)) {
+                        matches = false;
+                    }
+                }
+
+                // Type filter
+                if (activeFilters.type !== 'all') {
+                    if (!data.typeTag.includes(activeFilters.type) && 
+                        !data.cardText.includes(activeFilters.type)) {
+                        matches = false;
+                    }
+                }
+
+                // Price filter
+                if (activeFilters.price !== 'all' && data.price > 0) {
+                    const price = data.price;
+                    if (activeFilters.price === 'under 2m aed' && price >= 2000000) matches = false;
+                    if (activeFilters.price === '2m - 5m aed' && (price < 2000000 || price > 5000000)) matches = false;
+                    if (activeFilters.price === '5m - 10m aed' && (price < 5000000 || price > 10000000)) matches = false;
+                    if (activeFilters.price === 'above 10m aed' && price <= 10000000) matches = false;
+                }
+
+                // Location filter
+                if (activeFilters.location !== 'all') {
+                    const filterLoc = activeFilters.location;
+                    if (!data.location.includes(filterLoc) && !data.cardText.includes(filterLoc)) {
+                        matches = false;
+                    }
+                }
+
+                // Bedrooms filter
+                if (activeFilters.bedrooms !== 'all') {
+                    const bedroomFilter = activeFilters.bedrooms;
+                    if (bedroomFilter === 'studio' && data.bedrooms !== 0) {
+                        matches = false;
+                    } else if (bedroomFilter === '1 bedroom' && data.bedrooms !== 1) {
+                        matches = false;
+                    } else if (bedroomFilter === '2 bedrooms' && data.bedrooms !== 2) {
+                        matches = false;
+                    } else if (bedroomFilter === '3 bedrooms' && data.bedrooms !== 3) {
+                        matches = false;
+                    } else if (bedroomFilter === '4+ bedrooms' && data.bedrooms < 4) {
+                        matches = false;
+                    }
+                }
+
+                // Show or hide card with animation
+                if (matches) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                    visibleCount++;
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+
+            updateResultsDisplay(visibleCount);
+            updateClearButtonVisibility();
+        }
+
+        function updateResultsDisplay(visible = totalProperties) {
+            if (resultsCount) {
+                resultsCount.textContent = `${visible} Properties Found`;
+            }
+            if (totalCount) {
+                const totalText = totalCount.childNodes[totalCount.childNodes.length - 1];
+                if (totalText && totalText.nodeType === 3) {
+                    totalText.textContent = ` of ${totalProperties} total`;
+                }
+            }
+        }
+
+        function updateClearButtonVisibility() {
+            // Check if any filters are active
+            const hasActiveFilters = activeFilters.search !== '' ||
+                                    activeFilters.developer !== 'all' ||
+                                    activeFilters.type !== 'all' ||
+                                    activeFilters.price !== 'all' ||
+                                    activeFilters.location !== 'all' ||
+                                    activeFilters.bedrooms !== 'all';
+
+            if (clearFiltersBtn) {
+                clearFiltersBtn.style.opacity = hasActiveFilters ? '1' : '0.5';
+                clearFiltersBtn.style.pointerEvents = hasActiveFilters ? 'auto' : 'none';
+            }
+        }
+
+        // Add smooth transition styles to cards
+        propertyCards.forEach(card => {
+            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         });
 
-        // Touch swipe support
-        let touchStartX = 0;
-        let touchEndX = 0;
+        // Initialize clear button visibility
+        updateClearButtonVisibility();
 
-        track.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        track.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) {
-                window.moveCarousel(1);
-            }
-            if (touchEndX - touchStartX > 50) {
-                window.moveCarousel(-1);
-            }
-        }, { passive: true });
-
-        // Initialize
-        createIndicators();
-        updateCarousel();
+        // Debug function - uncomment to see what data is being extracted
+        // console.log('Property Cards Data:');
+        // propertyCards.forEach((card, index) => {
+        //     console.log(`Card ${index + 1}:`, extractCardData(card));
+        // });
     })();
+
+    const WEB3FORMS_ACCESS_KEY = '6ba4ddc2-a6f7-4330-848d-1eb2d72a5cdc'; // Replace with your actual key
+
+// Newsletter Form Submission
+document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    const emailInput = document.getElementById('emailInput');
+    const email = emailInput.value;
+    
+    // Disable button and show loading
+    submitBtn.disabled = true;
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline';
+    
+    try {
+        // Prepare form data for Web3Forms
+        const formData = new FormData();
+        formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+        formData.append('subject', 'New Newsletter Subscription - OffPlanUAE.AI');
+        formData.append('from_name', 'OffPlanUAE.AI Newsletter');
+        formData.append('email', email);
+        formData.append('message', `New newsletter subscription from: ${email}`);
+        
+        // Send to Web3Forms
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Show success popup
+            showPopup();
+            
+            // Reset form
+            form.reset();
+        } else {
+            throw new Error('Submission failed');
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Sorry, there was an error subscribing. Please try again later.');
+    } finally {
+        // Re-enable button
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+    }
+});
+
+// Show Popup
+function showPopup() {
+    const popup = document.getElementById('popupOverlay');
+    popup.classList.add('show');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+// Close Popup
+function closePopup() {
+    const popup = document.getElementById('popupOverlay');
+    popup.classList.remove('show');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Close popup when clicking outside
+document.getElementById('popupOverlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closePopup();
+    }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePopup();
+    }
+});
+
+
 </script>
 
 {% endblock %}
