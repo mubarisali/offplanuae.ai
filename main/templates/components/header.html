@@ -12,7 +12,7 @@
         
         <!-- Center Logo Section -->
         <div class="logo-section">
-            {% comment %} <a href="{% url 'home' %}" class="logo-link"> {% endcomment %}
+            <a href="{% url 'main:home' %}" class="logo-link">
                 <div class="logo-icon">
                     <i class="fas fa-plane-departure"></i>
                 </div>
@@ -30,8 +30,8 @@
             </ul>
         </nav>
         
-        <!-- Language Selector -->
-        <div class="header-actions">
+        <!-- Language Selector - Desktop Only -->
+        <div class="header-actions desktop-lang">
             <div class="language-selector">
                 <button class="lang-btn" id="langToggle">
                     <i class="fas fa-globe"></i>
@@ -65,6 +65,26 @@
             <li><a href="{% url 'main:about' %}" class="nav-link">About</a></li>
             <li><a href="{% url 'main:blog' %}" class="nav-link">Blog</a></li>
             <li><a href="{% url 'main:contact' %}" class="nav-link">Contact</a></li>
+            
+            <!-- Language Selector - Mobile Only -->
+            <li class="mobile-lang-section">
+                <div class="mobile-lang-title">
+                    <i class="fas fa-globe"></i>
+                    <span>Language</span>
+                </div>
+                <div class="mobile-lang-options">
+                    <a href="#" class="mobile-lang-option active" data-lang="en">
+                        <span class="flag">🇬🇧</span>
+                        <span>English</span>
+                        <i class="fas fa-check"></i>
+                    </a>
+                    <a href="#" class="mobile-lang-option" data-lang="ar">
+                        <span class="flag">🇦🇪</span>
+                        <span>العربية</span>
+                        <i class="fas fa-check"></i>
+                    </a>
+                </div>
+            </li>
         </ul>
     </div>
 </header>
@@ -76,7 +96,7 @@
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.98);
+    background: transparent;
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
     z-index: 1000;
@@ -84,6 +104,8 @@
 }
 
 .modern-header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
     padding: 0.5rem 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
 }
@@ -156,13 +178,13 @@
     flex-shrink: 0;
     display: flex;
     justify-content: center;
-    padding: 0 3rem; /* More gap left and right */
+    padding: 0 3rem;
 }
 
 .logo-link {
     display: flex;
     align-items: center;
-    gap: 1rem; /* Increased gap between icon and text */
+    gap: 1rem;
     text-decoration: none;
     transition: transform 0.3s ease;
 }
@@ -272,15 +294,18 @@
     }
 }
 
-/* Language Selector */
+/* Language Selector - Desktop */
 .header-actions {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    position: relative;
+    z-index: 1002;
 }
 
 .language-selector {
     position: relative;
+    z-index: 1002;
 }
 
 .lang-btn {
@@ -321,10 +346,11 @@
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 1001;
+    z-index: 1003;
 }
 
-.language-selector:hover .lang-dropdown {
+.language-selector:hover .lang-dropdown,
+.language-selector.active .lang-dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -403,6 +429,8 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
 }
 
 .mobile-menu.active {
@@ -425,6 +453,82 @@
     display: block;
     padding: 1rem 0;
     width: 100%;
+}
+
+/* Mobile Language Section */
+.mobile-lang-section {
+    padding: 1.5rem 0 1rem 0;
+    border-bottom: none !important;
+}
+
+.mobile-lang-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #1e3a5f;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.mobile-lang-title i {
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+.mobile-lang-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mobile-lang-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #475569;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.mobile-lang-option .flag {
+    font-size: 1.5rem;
+}
+
+.mobile-lang-option span:not(.flag) {
+    flex: 1;
+    font-size: 1rem;
+}
+
+.mobile-lang-option i.fa-check {
+    color: #f59e0b;
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-lang-option.active {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.mobile-lang-option.active i.fa-check {
+    opacity: 1;
+}
+
+.mobile-lang-option:active {
+    transform: scale(0.98);
+}
+
+/* Hide mobile language section on desktop */
+.mobile-lang-section {
+    display: none;
 }
 
 /* Gold Animation for Active Link */
@@ -459,13 +563,19 @@
         grid-column: 2;
     }
 
-    .header-actions {
-        grid-column: 3;
+    /* Hide desktop language selector */
+    .desktop-lang {
+        display: none;
+    }
+
+    /* Show mobile language section */
+    .mobile-lang-section {
+        display: block;
     }
 
     .mobile-toggle {
         display: flex;
-        grid-column: 4;
+        grid-column: 3;
     }
 }
 
@@ -478,6 +588,7 @@
     .logo-section {
         grid-column: 2;
         justify-content: center;
+        padding: 0 1rem;
     }
 
     .brand-name {
@@ -493,13 +604,10 @@
         font-size: 1.1rem;
     }
 
-    .header-actions {
-        grid-column: 3;
-    }
-
     .mobile-toggle {
-        position: absolute;
-        right: 1rem;
+        grid-column: 3;
+        position: relative;
+        right: 0;
     }
 }
 </style>
@@ -526,9 +634,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Language selector
-    const langOptions = document.querySelectorAll('.lang-option');
+    // Desktop Language selector - Toggle on click
     const langToggle = document.getElementById('langToggle');
+    const langSelector = document.querySelector('.language-selector');
+    const langOptions = document.querySelectorAll('.lang-option');
+    
+    if (langToggle) {
+        langToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langSelector.classList.toggle('active');
+        });
+    }
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (langSelector && !langSelector.contains(e.target)) {
+            langSelector.classList.remove('active');
+        }
+    });
     
     langOptions.forEach(option => {
         option.addEventListener('click', function(e) {
@@ -536,11 +659,62 @@ document.addEventListener('DOMContentLoaded', function() {
             const lang = this.dataset.lang;
             
             // Update button text
-            langToggle.querySelector('span').textContent = lang.toUpperCase();
+            if (langToggle) {
+                langToggle.querySelector('span').textContent = lang.toUpperCase();
+            }
             
-            // Update active state
+            // Update active state for desktop
             langOptions.forEach(opt => opt.classList.remove('active'));
             this.classList.add('active');
+            
+            // Update mobile language options
+            const mobileLangOptions = document.querySelectorAll('.mobile-lang-option');
+            mobileLangOptions.forEach(opt => {
+                if (opt.dataset.lang === lang) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+            
+            // Close dropdown
+            if (langSelector) {
+                langSelector.classList.remove('active');
+            }
+            
+            console.log('Language changed to:', lang);
+        });
+    });
+    
+    // Mobile Language selector
+    const mobileLangOptions = document.querySelectorAll('.mobile-lang-option');
+    
+    mobileLangOptions.forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.preventDefault();
+            const lang = this.dataset.lang;
+            
+            // Update button text for desktop
+            if (langToggle) {
+                langToggle.querySelector('span').textContent = lang.toUpperCase();
+            }
+            
+            // Update active state for mobile
+            mobileLangOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update desktop language options
+            langOptions.forEach(opt => {
+                if (opt.dataset.lang === lang) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+            
+            // Close mobile menu
+            mobileMenu.classList.remove('active');
+            mobileToggle.classList.remove('active');
             
             console.log('Language changed to:', lang);
         });

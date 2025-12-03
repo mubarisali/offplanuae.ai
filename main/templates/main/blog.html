@@ -1,344 +1,762 @@
-<!-- templates/main/blog.html -->
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
-<!-- Page Header -->
-<section class="page-header">
-    <div class="container">
-        <h1 class="animate-fade-in">Our Blog</h1>
-        <p class="animate-fade-in-delay">Latest news and insights about UAE real estate</p>
-    </div>
-</section>
-
-<!-- Blog Section -->
-<section class="blog-section">
-    <div class="container">
-        <div class="blog-grid">
-            {% for post in blog_posts %}
-            <article class="blog-card animate-on-scroll">
-                <div class="blog-image">
-                    <img src="{{ post.image }}" alt="{{ post.title }}">
-                    <div class="blog-date">
-                        <span class="date-day">{{ post.date|date:"d" }}</span>
-                        <span class="date-month">{{ post.date|date:"M" }}</span>
-                    </div>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="fas fa-user"></i> Admin</span>
-                        <span><i class="fas fa-comments"></i> 5 Comments</span>
-                    </div>
-                    <h2>{{ post.title }}</h2>
-                    <p>{{ post.excerpt }}</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-            {% endfor %}
-            
-            <!-- Additional Blog Posts -->
-            <article class="blog-card animate-on-scroll">
-                <div class="blog-image">
-                    <img src="{% static 'images/blog3.jpg' %}" alt="Blog Post">
-                    <div class="blog-date">
-                        <span class="date-day">05</span>
-                        <span class="date-month">Nov</span>
-                    </div>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="fas fa-user"></i> Admin</span>
-                        <span><i class="fas fa-comments"></i> 12 Comments</span>
-                    </div>
-                    <h2>Understanding Payment Plans for Off-Plan Properties</h2>
-                    <p>A comprehensive guide to payment structures and financial planning for off-plan investments in the UAE.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-            
-            <article class="blog-card animate-on-scroll">
-                <div class="blog-image">
-                    <img src="{% static 'images/blog4.jpg' %}" alt="Blog Post">
-                    <div class="blog-date">
-                        <span class="date-day">28</span>
-                        <span class="date-month">Oct</span>
-                    </div>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="fas fa-user"></i> Admin</span>
-                        <span><i class="fas fa-comments"></i> 8 Comments</span>
-                    </div>
-                    <h2>Top Emerging Neighborhoods in Dubai 2024</h2>
-                    <p>Discover the up-and-coming areas in Dubai that offer excellent investment opportunities.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-            
-            <article class="blog-card animate-on-scroll">
-                <div class="blog-image">
-                    <img src="{% static 'images/blog5.jpg' %}" alt="Blog Post">
-                    <div class="blog-date">
-                        <span class="date-day">20</span>
-                        <span class="date-month">Oct</span>
-                    </div>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="fas fa-user"></i> Admin</span>
-                        <span><i class="fas fa-comments"></i> 15 Comments</span>
-                    </div>
-                    <h2>Legal Considerations for Foreign Property Investors</h2>
-                    <p>Everything international investors need to know about UAE property laws and regulations.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-            
-            <article class="blog-card animate-on-scroll">
-                <div class="blog-image">
-                    <img src="{% static 'images/blog6.jpg' %}" alt="Blog Post">
-                    <div class="blog-date">
-                        <span class="date-day">15</span>
-                        <span class="date-month">Oct</span>
-                    </div>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="fas fa-user"></i> Admin</span>
-                        <span><i class="fas fa-comments"></i> 6 Comments</span>
-                    </div>
-                    <h2>Luxury Living: Premium Amenities to Look For</h2>
-                    <p>A guide to the most sought-after amenities in luxury off-plan developments.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-        </div>
-        
-        <!-- Pagination -->
-        <div class="pagination">
-            <a href="#" class="page-link active">1</a>
-            <a href="#" class="page-link">2</a>
-            <a href="#" class="page-link">3</a>
-            <a href="#" class="page-link"><i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
-</section>
-
-<!-- Newsletter Section -->
-<section class="newsletter">
-    <div class="container">
-        <div class="newsletter-content">
-            <h2>Subscribe to Our Newsletter</h2>
-            <p>Get the latest property news and exclusive offers delivered to your inbox</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit" class="btn btn-primary">Subscribe</button>
-            </form>
-        </div>
-    </div>
-</section>
-
-{% endblock %}
+{% block title %}{{ page_title }}{% endblock %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-.page-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-    color: var(--white);
-    padding: 100px 0 60px;
-    text-align: center;
-    margin-top: 80px;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-.blog-section {
-    padding: 80px 0;
-}
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        color: #333;
+    }
 
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
+    .blog-page {
+        padding: 100px 0 60px 0;
+        position: relative;
+        overflow: hidden;
+    }
 
-.blog-card {
-    background: var(--white);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
+    /* Decorative Background Elements */
+    .bg-decoration {
+        position: absolute;
+        pointer-events: none;
+        z-index: 0;
+    }
 
-.blog-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-hover);
-}
+    .circle-1 {
+        top: 100px;
+        right: -100px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite;
+    }
 
-.blog-image {
-    position: relative;
-    height: 250px;
-    overflow: hidden;
-}
+    .circle-2 {
+        bottom: 100px;
+        left: -150px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(44, 62, 80, 0.08) 0%, transparent 70%);
+        border-radius: 50%;
+        animation: float 10s ease-in-out infinite reverse;
+    }
 
-.blog-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
+    @keyframes float {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-30px) scale(1.05); }
+    }
 
-.blog-card:hover .blog-image img {
-    transform: scale(1.1);
-}
+    /* Hero Section */
+    .blog-hero {
+        max-width: 1400px;
+        margin: 0 auto 80px;
+        padding: 0 20px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        animation: fadeInDown 0.8s ease-out;
+    }
 
-.blog-date {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: var(--primary-color);
-    color: var(--white);
-    width: 60px;
-    height: 60px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-.date-day {
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1;
-}
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 24px;
+        background: linear-gradient(135deg, #d4a574 0%, #c89960 100%);
+        color: white;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        animation: pulse 2s ease-in-out infinite;
+    }
 
-.date-month {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
 
-.blog-content {
-    padding: 1.5rem;
-}
+    .hero-title {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        background: linear-gradient(135deg, #2c3e50 0%, #d4a574 50%, #2c3e50 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+       animation: shimmer 17s linear infinite;
+    }
 
-.blog-meta {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
+    @keyframes shimmer {
+        to { background-position: 200% center; }
+    }
 
-.blog-meta span i {
-    margin-right: 0.3rem;
-}
+    .hero-description {
+        font-size: 1.2rem;
+        color: #6c757d;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        line-height: 1.8;
+    }
 
-.blog-content h2 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--secondary-color);
-}
+    /* Filter Tabs */
+    .filter-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+    }
 
-.blog-content p {
-    color: var(--text-light);
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
+    .filter-btn {
+        padding: 12px 28px;
+        background: white;
+        border: 2px solid transparent;
+        border-radius: 50px;
+        color: #6c757d;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
 
-.read-more {
-    color: var(--primary-color);
-    font-weight: 600;
-    transition: var(--transition);
-}
+    .filter-btn:hover {
+        border-color: rgba(212, 165, 116, 0.5);
+        color: #d4a574;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);
+    }
 
-.read-more:hover {
-    color: var(--accent-color);
-}
+    .filter-btn.active {
+        background: linear-gradient(135deg, #d4a574 0%, #c89960 100%);
+        color: white;
+        border-color: #d4a574;
+        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+    }
 
-.read-more i {
-    margin-left: 0.5rem;
-    transition: var(--transition);
-}
+    /* Blog Grid */
+    .blog-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 1;
+    }
 
-.read-more:hover i {
-    transform: translateX(5px);
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 2rem;
-}
-
-.page-link {
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    background: var(--bg-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.page-link:hover,
-.page-link.active {
-    background: var(--primary-color);
-    color: var(--white);
-}
-
-.newsletter {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, #2a2a2a 100%);
-    color: var(--white);
-    padding: 60px 0;
-}
-
-.newsletter-content {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.newsletter-content h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.newsletter-content p {
-    margin-bottom: 2rem;
-    opacity: 0.9;
-}
-
-.newsletter-form {
-    display: flex;
-    gap: 1rem;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.newsletter-form input {
-    flex: 1;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 50px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.newsletter-form button {
-    white-space: nowrap;
-}
-
-@media (max-width: 768px) {
     .blog-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 60px;
     }
-    
-    .newsletter-form {
+
+    /* Blog Card */
+    .blog-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        position: relative;
+        animation: fadeInUp 0.6s ease-out backwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .blog-card:nth-child(1) { animation-delay: 0.1s; }
+    .blog-card:nth-child(2) { animation-delay: 0.2s; }
+    .blog-card:nth-child(3) { animation-delay: 0.3s; }
+    .blog-card:nth-child(4) { animation-delay: 0.4s; }
+    .blog-card:nth-child(5) { animation-delay: 0.5s; }
+    .blog-card:nth-child(6) { animation-delay: 0.6s; }
+
+    .blog-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(44, 62, 80, 0.1));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .blog-card:hover::before {
+        opacity: 1;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(212, 165, 116, 0.25);
+    }
+
+    /* Featured Card - First item larger */
+    .blog-card.featured {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .blog-card.featured .card-image {
+        height: 450px;
+    }
+
+    .blog-card.featured .card-content {
+        padding: 40px;
+    }
+
+    .blog-card.featured .card-title {
+        font-size: 2.2rem;
+    }
+
+    .blog-card.featured .card-excerpt {
+        font-size: 1.1rem;
+        display: block;
+    }
+
+    /* Card Image */
+    .card-image {
+        position: relative;
+        height: 240px;
+        background: linear-gradient(135deg, rgba(212, 165, 116, 0.3), rgba(44, 62, 80, 0.3));
+        overflow: hidden;
+    }
+
+    .card-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .blog-card:hover .card-image::after {
+        opacity: 1;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .blog-card:hover .card-image img {
+        transform: scale(1.1) rotate(2deg);
+    }
+
+    /* Category Badge on Image */
+    .category-overlay {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 8px 18px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 50px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #d4a574;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+
+    /* Card Content */
+    .card-content {
+        padding: 30px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .card-meta {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #999;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .meta-item i {
+        color: #d4a574;
+        font-size: 12px;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 12px;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: color 0.3s ease;
+    }
+
+    .blog-card:hover .card-title {
+        color: #d4a574;
+    }
+
+    .card-excerpt {
+        color: #6c757d;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        display: none;
+    }
+
+    .blog-card.featured .card-excerpt {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .read-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #d4a574;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: gap 0.3s ease;
+    }
+
+    .blog-card:hover .read-more {
+        gap: 12px;
+    }
+
+    .read-more i {
+        transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover .read-more i {
+        transform: translateX(3px);
+    }
+
+    /* Load More Button */
+    .load-more-section {
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    .btn-load-more {
+        padding: 16px 50px;
+        background: white;
+        border: 2px solid #d4a574;
+        border-radius: 50px;
+        color: #d4a574;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);
+    }
+
+    .btn-load-more:hover {
+        background: linear-gradient(135deg, #d4a574 0%, #c89960 100%);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
+    }
+
+    /* Floating Buttons */
+    .floating-btns {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
         flex-direction: column;
+        gap: 12px;
+        z-index: 1000;
     }
-}
+
+    .floating-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 24px;
+        background: #4a5568;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .floating-btn:hover {
+        background: #3a4558;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-btn i {
+        font-size: 18px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+        .blog-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .blog-card.featured {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .blog-card.featured .card-image {
+            height: 350px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .blog-page {
+            padding: 80px 0 40px 0;
+        }
+
+        .blog-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .blog-card.featured {
+            grid-column: span 1;
+        }
+
+        .blog-card.featured .card-image {
+            height: 280px;
+        }
+
+        .blog-card.featured .card-content {
+            padding: 30px;
+        }
+
+        .blog-card.featured .card-title {
+            font-size: 1.6rem;
+        }
+
+        .card-image {
+            height: 220px;
+        }
+
+        .filter-tabs {
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            font-size: 0.85rem;
+        }
+
+        .floating-btns {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .floating-btn span {
+            display: none;
+        }
+
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+        }
+    }
 </style>
+{% endblock %}
+
+{% block content %}
+<div class="blog-page">
+    <!-- Background Decorations -->
+    <div class="bg-decoration circle-1"></div>
+    <div class="bg-decoration circle-2"></div>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="hero-badge">
+            <i class="fas fa-newspaper"></i>
+            Our Blog
+        </div>
+        <h1 class="hero-title">Real Estate Insights & News</h1>
+        <p class="hero-description">
+            Stay updated with the latest trends, market insights, and expert advice on UAE's off-plan property market
+        </p>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-btn active">All Articles</button>
+            <button class="filter-btn">Market Insights</button>
+            <button class="filter-btn">Investment Tips</button>
+            <button class="filter-btn">Legal Guide</button>
+            <button class="filter-btn">Technology</button>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <div class="blog-container">
+        <div class="blog-grid">
+            <!-- Featured Article (Larger Card) -->
+            <article class="blog-card featured">
+                <div class="card-image">
+                    <img src="{% static 'img/hero.avif' %}" alt="Blog post">
+                    <div class="category-overlay">Market Insights</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>Nov 20, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>5 min read</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="far fa-user"></i>
+                            <span>Sarah Ahmed</span>
+                        </div>
+                    </div>
+                    <h2 class="card-title">Top 10 Off-Plan Developments in Dubai 2025</h2>
+                    <p class="card-excerpt">
+                        Explore the most promising off-plan projects launching this year in Dubai's thriving real estate market. Discover exclusive opportunities.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read Full Article
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Regular Articles -->
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="{% static 'img/hero.avif' %}" alt="Blog post">
+                    <div class="category-overlay">Technology</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>Nov 18, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>7 min read</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">How AI is Transforming Property Investment</h3>
+                    <a href="#" class="read-more">
+                        Read More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="{% static 'img/hero.avif' %}" alt="Blog post">
+                    <div class="category-overlay">Legal Guide</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>Nov 15, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>10 min read</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Understanding UAE Real Estate Laws</h3>
+                    <a href="#" class="read-more">
+                        Read More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="{% static 'img/hero.avif' %}" alt="Blog post">
+                    <div class="category-overlay">Investment</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>Nov 12, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>6 min read</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Investment Tips for First-Time Buyers</h3>
+                    <a href="#" class="read-more">
+                        Read More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="{% static 'img/hero.avif' %}" alt="Blog post">
+                    <div class="category-overlay">Market Insights</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>Nov 10, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>8 min read</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Abu Dhabi's Emerging Property Hotspots</h3>
+                    <a href="#" class="read-more">
+                        Read More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="card-image">
+                    <img src="{% static 'img/hero.avif' %}" alt="Blog post">
+                    <div class="category-overlay">Finance</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>Nov 8, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>9 min read</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Financing Your Off-Plan Property Purchase</h3>
+                    <a href="#" class="read-more">
+                        Read More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Load More Section -->
+        <div class="load-more-section">
+            <button class="btn-load-more">
+                Load More Articles
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Floating Action Buttons -->
+<div class="floating-btns">
+    <a href="tel:+971-XXX-XXXX" class="floating-btn">
+        <i class="fas fa-phone"></i>
+        <span>Call Back</span>
+    </a>
+    <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="floating-btn">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+    </a>
+</div>
+
+<script>
+// Filter functionality
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+// Load more functionality
+document.querySelector('.btn-load-more').addEventListener('click', function() {
+    alert('Loading more articles...');
+});
+</script>
 {% endblock %}

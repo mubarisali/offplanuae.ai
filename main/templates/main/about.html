@@ -1,277 +1,868 @@
-<!-- templates/main/about.html -->
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
-<!-- Page Header -->
-<section class="page-header">
-    <div class="container">
-        <h1 class="animate-fade-in">About Us</h1>
-        <p class="animate-fade-in-delay">Learn more about OffPlan UAE</p>
-    </div>
-</section>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- About Content -->
-<section class="about-content">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-text animate-on-scroll">
-                <h2>Who We Are</h2>
-                <p>OffPlan UAE is a leading real estate platform specializing in off-plan properties across the United Arab Emirates. With years of experience in the UAE property market, we connect investors and homebuyers with the finest developments in Dubai, Abu Dhabi, and beyond.</p>
-                <p>Our mission is to simplify the property buying process and provide our clients with access to exclusive off-plan opportunities that promise exceptional returns on investment.</p>
-                <p>We work closely with top developers and understand the intricacies of off-plan investments, ensuring our clients make informed decisions backed by comprehensive market insights.</p>
-            </div>
-            <div class="about-image animate-on-scroll">
-                <img src="{% static 'images/about-image.jpg' %}" alt="About OffPlan UAE">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Our Values -->
-<section class="values">
-    <div class="container">
-        <h2 class="section-title">Our Core Values</h2>
-        <div class="values-grid">
-            <div class="value-card animate-on-scroll">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Trust & Transparency</h3>
-                <p>We believe in complete transparency and building long-term relationships based on trust.</p>
-            </div>
-            <div class="value-card animate-on-scroll">
-                <i class="fas fa-star"></i>
-                <h3>Excellence</h3>
-                <p>We strive for excellence in every aspect of our service and client relationships.</p>
-            </div>
-            <div class="value-card animate-on-scroll">
-                <i class="fas fa-handshake"></i>
-                <h3>Integrity</h3>
-                <p>Honesty and ethical practices are at the heart of everything we do.</p>
-            </div>
-            <div class="value-card animate-on-scroll">
-                <i class="fas fa-lightbulb"></i>
-                <h3>Innovation</h3>
-                <p>We continuously innovate to provide the best solutions for our clients.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Statistics -->
-<section class="statistics">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item animate-on-scroll">
-                <div class="stat-number counter" data-target="500">0</div>
-                <div class="stat-label">Properties Listed</div>
-            </div>
-            <div class="stat-item animate-on-scroll">
-                <div class="stat-number counter" data-target="1200">0</div>
-                <div class="stat-label">Happy Clients</div>
-            </div>
-            <div class="stat-item animate-on-scroll">
-                <div class="stat-number counter" data-target="50">0</div>
-                <div class="stat-label">Developer Partners</div>
-            </div>
-            <div class="stat-item animate-on-scroll">
-                <div class="stat-number counter" data-target="15">0</div>
-                <div class="stat-label">Years Experience</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Team Section -->
-<section class="team">
-    <div class="container">
-        <h2 class="section-title">Meet Our Team</h2>
-        <div class="team-grid">
-            <div class="team-member animate-on-scroll">
-                <div class="member-image">
-                    <img src="{% static 'images/team1.jpg' %}" alt="Team Member">
-                </div>
-                <h3>John Smith</h3>
-                <p class="member-role">CEO & Founder</p>
-                <div class="member-social">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-            <div class="team-member animate-on-scroll">
-                <div class="member-image">
-                    <img src="{% static 'images/team2.jpg' %}" alt="Team Member">
-                </div>
-                <h3>Sarah Johnson</h3>
-                <p class="member-role">Head of Sales</p>
-                <div class="member-social">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-            <div class="team-member animate-on-scroll">
-                <div class="member-image">
-                    <img src="{% static 'images/team3.jpg' %}" alt="Team Member">
-                </div>
-                <h3>Michael Brown</h3>
-                <p class="member-role">Investment Advisor</p>
-                <div class="member-social">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-{% endblock %}
-
-{% block extra_css %}
 <style>
-.page-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-    color: var(--white);
-    padding: 100px 0 60px;
-    text-align: center;
-    margin-top: 80px;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin-top: 2rem;
-}
-
-.about-text h2 {
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-}
-
-.about-text p {
-    margin-bottom: 1rem;
-    color: var(--text-light);
-    line-height: 1.8;
-}
-
-.about-image img {
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-}
-
-.values {
-    background: var(--bg-light);
-}
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.value-card {
-    text-align: center;
-    padding: 2rem;
-}
-
-.value-card i {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.statistics {
-    background: var(--secondary-color);
-    color: var(--white);
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.stat-label {
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-}
-
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.team-member {
-    text-align: center;
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.team-member:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-hover);
-}
-
-.member-image {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 1rem;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.member-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.member-role {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.member-social {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.member-social a {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background: var(--bg-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-}
-
-.member-social a:hover {
-    background: var(--primary-color);
-    color: var(--white);
-}
-
-@media (max-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr;
+    .about-page {
+        min-height: 100vh;
+        background: #f9fafb;
+        
     }
-}
+
+    /* Hero Section with Background Image */
+    .hero-about {
+        position: relative;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+          margin-top: 0;
+    padding-top: 6rem;
+        
+    }
+
+    .hero-about-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+
+    .hero-about-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        animation: scaleIn 1.5s ease-out;
+    }
+
+    @keyframes scaleIn {
+        from {
+            transform: scale(1.05);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(249, 250, 251, 0.95), rgba(249, 250, 251, 0.9), rgba(249, 250, 251, 1));
+    }
+
+    .hero-decorative {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .decorative-circle-1 {
+        position: absolute;
+        top: 5rem;
+        right: 2.5rem;
+        width: 18rem;
+        height: 18rem;
+        background: rgba(245, 158, 11, 0.05);
+        border-radius: 50%;
+        filter: blur(60px);
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .decorative-circle-2 {
+        position: absolute;
+        bottom: 5rem;
+        left: 2.5rem;
+        width: 24rem;
+        height: 24rem;
+        background: rgba(59, 130, 246, 0.1);
+        border-radius: 50%;
+        filter: blur(60px);
+        animation: pulse 2s ease-in-out infinite;
+        animation-delay: 1s;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.6;
+        }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        padding-top: 8rem;
+        text-align: center;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .hero-title .brand-name {
+        background: linear-gradient(135deg, #1e3a5f 0%, #f59e0b 50%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1.125rem, 2vw, 1.5rem);
+        color: #64748b;
+        line-height: 1.6;
+        max-width: 56rem;
+        margin: 0 auto;
+    }
+
+    /* Main Content */
+    .about-content {
+        padding: 5rem 1rem;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    /* Story Section */
+    .story-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+        margin-bottom: 5rem;
+    }
+
+    .story-card {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(59, 130, 246, 0.05));
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    .story-card:hover {
+        box-shadow: 0 20px 40px rgba(245, 158, 11, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .story-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #1e3a5f, #f59e0b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .story-text {
+        color: #64748b;
+        line-height: 1.8;
+        font-size: 1.125rem;
+        margin-bottom: 1rem;
+    }
+
+    .story-image {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        height: 400px;
+    }
+
+    .story-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+    }
+
+    .story-image:hover img {
+        transform: scale(1.1);
+    }
+
+    .image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2), transparent);
+    }
+
+    .image-caption {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        right: 1.5rem;
+        color: white;
+        font-size: 1.125rem;
+        font-weight: 600;
+    }
+
+    /* Values Section */
+    .values-section {
+        margin-bottom: 5rem;
+        position: relative;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #1e3a5f, #f59e0b, #1e3a5f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-subtitle {
+        font-size: 1.25rem;
+        color: #64748b;
+    }
+
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .value-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 1rem;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .value-card:hover {
+        border-color: rgba(245, 158, 11, 0.5);
+        box-shadow: 0 10px 30px rgba(245, 158, 11, 0.1);
+        transform: translateY(-4px);
+    }
+
+    .value-card.featured {
+        grid-column: span 2;
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(59, 130, 246, 0.05));
+        border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .value-icon-wrapper {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .value-card:hover .value-icon-wrapper {
+        transform: scale(1.1);
+    }
+
+    .value-card.featured .value-icon-wrapper {
+        background: rgba(245, 158, 11, 0.2);
+    }
+
+    .value-icon {
+        font-size: 2rem;
+        color: #f59e0b;
+    }
+
+    .value-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: #f59e0b;
+    }
+
+    .value-description {
+        color: #64748b;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    /* Stats Section */
+    .stats-section {
+        background: linear-gradient(135deg, #1e3a5f, #2c5282);
+        border-radius: 1.5rem;
+        padding: 3rem;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 5rem;
+    }
+
+    .stats-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 3rem;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .stat-item {
+        transition: transform 0.3s ease;
+    }
+
+    .stat-item:hover {
+        transform: scale(1.1);
+    }
+
+    .stat-number {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        color: #f59e0b;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.125rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 5rem;
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .contact-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1e3a5f;
+    }
+
+    .map-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        height: 400px;
+    }
+
+    .map-card iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .contact-card {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(59, 130, 246, 0.05));
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-card-title {
+        font-size: 1.875rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #1e3a5f;
+    }
+
+    .contact-card-subtitle {
+        color: #64748b;
+        margin-bottom: 2rem;
+    }
+
+    .contact-item {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover {
+        transform: translateX(4px);
+    }
+
+    .contact-icon-wrapper {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+    }
+
+    .contact-item:hover .contact-icon-wrapper {
+        background: rgba(245, 158, 11, 0.2);
+    }
+
+    .contact-icon {
+        font-size: 1.5rem;
+        color: #f59e0b;
+    }
+
+    .contact-label {
+        font-weight: 600;
+        font-size: 1.125rem;
+        margin-bottom: 0.25rem;
+        color: #1e3a5f;
+    }
+
+    .contact-value {
+        color: #64748b;
+    }
+
+    /* Floating Buttons */
+    .floating-buttons {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        display: flex;
+        gap: 0.75rem;
+        z-index: 1000;
+    }
+
+    .float-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        background: #4a5568;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(74, 85, 104, 0.3);
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .float-btn:hover {
+        background: #3a4558;
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(74, 85, 104, 0.4);
+    }
+
+    .float-btn i {
+        font-size: 1.25rem;
+        transition: transform 0.3s ease;
+    }
+
+    .float-btn:hover i {
+        transform: rotate(12deg);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .story-section,
+        .values-grid,
+        .stats-grid,
+        .contact-section {
+            grid-template-columns: 1fr;
+        }
+
+        .value-card.featured {
+            grid-column: span 1;
+        }
+
+        .floating-buttons {
+            flex-direction: column;
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        .float-btn span {
+            display: none;
+        }
+
+        .hero-about {
+            margin-top: 4rem;
+        }
+         .newsletter-form {
+            flex-direction: column;
+        }
+
+        .newsletter-section {
+            padding: 3rem 1.5rem;
+        }
+    }
+     /* Newsletter Section */
+    .newsletter-section {
+        background: linear-gradient(135deg, #fff, #fff);
+        border-radius: 1.5rem;
+        padding: 4rem 2rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .newsletter-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+
+        animation: pulse 3s ease-in-out infinite;
+    }
+
+    .newsletter-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .newsletter-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: #1e3a5f;
+        margin-bottom: 1rem;
+    }
+
+    .newsletter-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #f59e0b, #d97706);
+        margin: 1rem auto;
+        border-radius: 2px;
+    }
+
+    .newsletter-subtitle {
+        font-size: 1.125rem;
+        color: #64748b;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 1rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .newsletter-input {
+        flex: 1;
+        padding: 1.25rem 1.5rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: white;
+        color: #1e3a5f;
+    }
+
+    .newsletter-input:focus {
+        outline: none;
+        border-color: #f59e0b;
+        box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+    }
+
+    .newsletter-input::placeholder {
+        color: #94a3b8;
+    }
+
+    .newsletter-button {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1.25rem 2rem;
+        background: #1e3a5f;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .newsletter-button:hover {
+        background: #2c5282;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(30, 58, 95, 0.3);
+    }
+
+    .newsletter-button i {
+        transition: transform 0.3s ease;
+    }
+
+    .newsletter-button:hover i {
+        transform: translateX(4px);
+    }
+
+   
+
+       
+    
 </style>
+
+<div class="about-page">
+    <!-- Hero Section with Background Image -->
+    <section class="hero-about">
+        <div class="hero-about-bg">
+            <img src="{% static 'img/hero.avif' %}" alt="About OffPlanUAE.ai">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="hero-decorative">
+            <div class="decorative-circle-1"></div>
+            <div class="decorative-circle-2"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">
+                About <span class="brand-name">OffPlanUAE.ai</span>
+            </h1>
+            <p class="hero-subtitle">
+                We're transforming the way people discover and invest in off-plan properties across the UAE, powered by cutting-edge artificial intelligence.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="about-content">
+        <!-- Story Section -->
+        <div class="story-section">
+            <div class="story-card">
+                <h2 class="story-title">Our Story</h2>
+                <p class="story-text">
+                    Founded in 2025, OffPlanUAE.ai emerged from a simple observation: finding the right off-plan property in UAE's dynamic market was unnecessarily complex and time-consuming.
+                </p>
+                <p class="story-text">
+                    We combined our deep understanding of the UAE real estate market with advanced AI algorithms to create a platform that empowers investors with data-driven insights.
+                </p>
+                <p class="story-text">
+                    Today, we serve thousands of investors, helping them navigate the exciting world of off-plan properties with confidence and clarity.
+                </p>
+            </div>
+
+            <div class="story-image">
+                <img src="{% static 'img/hero.avif' %}" alt="Dubai cityscape">
+                <div class="image-overlay"></div>
+                <p class="image-caption">Serving UAE's Premium Real Estate Market</p>
+            </div>
+        </div>
+
+        <!-- Values Section -->
+        <div class="values-section">
+            <div class="section-header">
+                <h2 class="section-title">What Drives Us</h2>
+                <p class="section-subtitle">Our core values shape everything we do</p>
+            </div>
+
+            <div class="values-grid">
+                <!-- Mission Card - Featured -->
+                <div class="value-card featured">
+                    <div class="value-icon-wrapper">
+                        <i class="fas fa-bullseye value-icon"></i>
+                    </div>
+                    <h3 class="value-title">Our Mission</h3>
+                    <p class="value-description">
+                        To revolutionize property discovery in UAE through innovative AI technology and transparent processes.
+                    </p>
+                </div>
+
+                <!-- Team Card -->
+                <div class="value-card">
+                    <div class="value-icon-wrapper" style="background: rgba(59, 130, 246, 0.1);">
+                        <i class="fas fa-users value-icon" style="color: #3b82f6;"></i>
+                    </div>
+                    <h3 class="value-title" style="color: #3b82f6;">Our Team</h3>
+                    <p class="value-description">
+                        A diverse team of real estate experts, data scientists, and technology innovators.
+                    </p>
+                </div>
+
+                <!-- Experience Card -->
+                <div class="value-card">
+                    <div class="value-icon-wrapper">
+                        <i class="fas fa-award value-icon"></i>
+                    </div>
+                    <h3 class="value-title">Our Experience</h3>
+                    <p class="value-description">
+                        Years of combined expertise in UAE real estate market and artificial intelligence.
+                    </p>
+                </div>
+
+                <!-- Vision Card - Featured -->
+                <div class="value-card featured">
+                    <div class="value-icon-wrapper" style="background: rgba(59, 130, 246, 0.2);">
+                        <i class="fas fa-sparkles value-icon" style="color: #3b82f6;"></i>
+                    </div>
+                    <h3 class="value-title" style="color: #3b82f6;">Our Vision</h3>
+                    <p class="value-description">
+                        Making property investment accessible, intelligent, and profitable for everyone.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <h2 class="stats-title">Our Impact in Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Properties Listed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2,000+</div>
+                    <div class="stat-label">Happy Investors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-header">
+            <h2 class="contact-title">Visit Our Office</h2>
+        </div>
+
+        <div class="contact-section">
+            <!-- Map -->
+            <div class="map-card">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.6828174052!2d54.89782!3d25.076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1234567890"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-card">
+                <h3 class="contact-card-title">Get in Touch</h3>
+                <p class="contact-card-subtitle">Visit us or reach out through any of these channels</p>
+
+                <div class="contact-item">
+                    <div class="contact-icon-wrapper" style="background: rgba(245, 158, 11, 0.1);">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                    </div>
+                    <div>
+                        <div class="contact-label">Address</div>
+                        <div class="contact-value">Business Bay, Dubai<br>United Arab Emirates</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon-wrapper" style="background: rgba(59, 130, 246, 0.1);">
+                        <i class="fas fa-phone contact-icon" style="color: #3b82f6;"></i>
+                    </div>
+                    <div>
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+971-XXX-XXXX</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon-wrapper" style="background: rgba(245, 158, 11, 0.1);">
+                        <i class="fas fa-envelope contact-icon"></i>
+                    </div>
+                    <div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">info@offplanuae.ai</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon-wrapper" style="background: rgba(59, 130, 246, 0.1);">
+                        <i class="fas fa-globe contact-icon" style="color: #3b82f6;"></i>
+                    </div>
+                    <div>
+                        <div class="contact-label">Website</div>
+                        <div class="contact-value">www.offplanuae.ai</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="newsletter-section">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Stay Updated</h2>
+                <p class="newsletter-subtitle">
+                    Get the latest off-plan property listings and investment insights delivered to your inbox.
+                </p>
+                <form class="newsletter-form">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email address" 
+                        class="newsletter-input"
+                        required
+                    >
+                    <button type="submit" class="newsletter-button">
+                        Subscribe
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Floating Action Buttons -->
+<div class="floating-buttons">
+    <a href="tel:+971-XXX-XXXX" class="float-btn">
+        <i class="fas fa-phone"></i>
+        <span>Call Back</span>
+    </a>
+    <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="float-btn">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+    </a>
+</div>
+
 {% endblock %}
